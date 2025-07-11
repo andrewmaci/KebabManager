@@ -1,0 +1,5 @@
+{
+  "name": "Kebab Order Organizer",
+  "description": "An application to gather and organize kebab orders from a group of people. Uses a backend to share the order list across multiple workstations.",
+  "requestFramePermissions": []
+}

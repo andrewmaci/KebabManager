@@ -1,0 +1,8 @@
+services:
+  kebab-app:
+
+    build: .
+    image: kebab-order-app
+    ports:
+      - "4050:4000"
+    restart: unless-stopped

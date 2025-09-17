@@ -138,7 +138,7 @@ const App: React.FC = () => {
       <main className="p-4 md:p-8">
         <header className="text-center mb-10 pt-8 md:pt-0">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-500 to-red-600 bg-clip-text text-transparent">
-            Kebab Voyager
+            Aureos Kebab
           </h1>
           <p className="mt-2 text-lg text-slate-600 dark:text-slate-400">Twój bedas na zawołanie</p>
         </header>

@@ -17,6 +17,8 @@ from reportlab.pdfgen import canvas
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 # --- Models ---
 class KebabOrderData(BaseModel):
     customerName: str
@@ -95,11 +97,24 @@ async def add_order(order_data: KebabOrderData):
     return new_order
 
 # --- Static Files and App Serving ---
+
+# --- PDF Font Setup ---
+import pathlib
+FONT_PATH = str(pathlib.Path(__file__).parent / "static" / "assets" / "DejaVuSans.ttf")
+if os.path.exists(FONT_PATH):
+    pdfmetrics.registerFont(TTFont("DejaVuSans", FONT_PATH))
+    FONT_NAME = "DejaVuSans"
+else:
+    FONT_NAME = "Helvetica"  # fallback
+
 @app.post("/api/orders/pdf")
 async def generate_orders_pdf(orders: list[KebabOrderData]):
     buffer = BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=A4)
+    doc = SimpleDocTemplate(buffer, pagesize=A4, leftMargin=30, rightMargin=30, topMargin=30, bottomMargin=30)
     styles = getSampleStyleSheet()
+    # Use DejaVuSans for all text if available
+    styles['Title'].fontName = FONT_NAME
+    styles['Normal'].fontName = FONT_NAME
     elements = []
 
     # Title
@@ -120,15 +135,21 @@ async def generate_orders_pdf(orders: list[KebabOrderData]):
             order.meatType
         ])
 
-    table = Table(data, repeatRows=1)
+    # Calculate column widths to span the page width
+    page_width = A4[0] - doc.leftMargin - doc.rightMargin
+    col_count = len(data[0])
+    col_width = page_width / col_count
+    col_widths = [col_width] * col_count
+
+    table = Table(data, repeatRows=1, colWidths=col_widths)
     table.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), colors.Color(0.85, 0.47, 0.02)),  # amber-600
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
-        ('FONTSIZE', (0, 0), (-1, -1), 10),
+        ('FONTNAME', (0, 0), (-1, -1), FONT_NAME),
+        ('FONTSIZE', (0, 0), (-1, -1), 11),
         ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+        ('TOPPADDING', (0, 0), (-1, 0), 8),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
     ]))
     elements.append(table)

@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { KebabIcon } from './icons/KebabIcon';
 import { ChartIcon } from './icons/ChartIcon';
+import { ThemeSwitcher } from './ThemeSwitcher';
 
 const AdminToggle: React.FC<{ isAdmin: boolean; onToggle: () => void }> = ({ isAdmin, onToggle }) => (
     <div className="flex items-center gap-2">
@@ -28,9 +29,11 @@ const AdminToggle: React.FC<{ isAdmin: boolean; onToggle: () => void }> = ({ isA
 interface NavigationBarProps {
     isAdmin: boolean;
     onToggleAdmin: () => void;
+    theme: string;
+    toggleTheme: () => void;
 }
 
-export const NavigationBar: React.FC<NavigationBarProps> = ({ isAdmin, onToggleAdmin }) => {
+export const NavigationBar: React.FC<NavigationBarProps> = ({ isAdmin, onToggleAdmin, theme, toggleTheme }) => {
   const linkStyles = "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors";
   const activeLinkStyles = "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-slate-100";
   const inactiveLinkStyles = "text-slate-600 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-700/50";
@@ -59,7 +62,10 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ isAdmin, onToggleA
             </NavLink>
           </li>
         </ul>
-        <AdminToggle isAdmin={isAdmin} onToggle={onToggleAdmin} />
+        <div className="flex items-center gap-4">
+          <AdminToggle isAdmin={isAdmin} onToggle={onToggleAdmin} />
+          <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
+        </div>
       </nav>
     </header>
   );

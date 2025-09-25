@@ -19,6 +19,7 @@ class KebabOrderData(BaseModel):
     size: str
     sauce: str
     meatType: str
+    date: str | None = None
 
 class KebabOrder(KebabOrderData):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
@@ -71,9 +72,12 @@ async def order_stream(request: Request):
 
 # --- Standard API Routes ---
 @app.get("/api/orders", response_model=List[KebabOrder])
-def get_orders():
+def get_orders(date: str | None = None):
     orders = []
-    for doc in orders_collection.stream():
+    query = orders_collection
+    if date:
+        query = query.where('date', '==', date)
+    for doc in query.stream():
         orders.append(KebabOrder(**doc.to_dict()))
     return orders
 
@@ -100,12 +104,14 @@ async def edit_order(order_id: str, order_data: KebabOrderData):
 @app.delete("/api/orders/{order_id}")
 async def delete_order(order_id: str):
     doc_ref = orders_collection.document(order_id)
-    if not doc_ref.get().exists:
+    doc = doc_ref.get()
+    if not doc.exists:
         raise HTTPException(status_code=404, detail="Order not found")
-        
+    
+    order_data = doc.to_dict()
     doc_ref.delete()
     # Notify all clients of the deletion
-    await send_update("delete_order", {"id": order_id})
+    await send_update("delete_order", {"id": order_id, "date": order_data.get("date")})
     return {"message": "Order deleted"}
 
 # --- Static Files and App Serving ---

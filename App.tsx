@@ -22,32 +22,45 @@ const App: React.FC = () => {
       return false;
     }
   });
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') || 'light';
+    }
+    return 'light';
+  });
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  };
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch('/api/orders');
+        const response = await fetch(`/api/orders?date=${selectedDate}`);
         const orders: KebabOrder[] = await response.json();
-        const ordersByDate = orders.reduce((acc, order) => {
-          const date = getTodayString(); // Assuming all orders are for today for now
-          if (!acc[date]) {
-            acc[date] = [];
-          }
-          acc[date].push(order);
-          return acc;
-        }, {} as { [key: string]: KebabOrder[] });
-        setAllOrders(ordersByDate);
+        setAllOrders(prev => ({ ...prev, [selectedDate]: orders }));
       } catch (error) {
         console.error("Failed to fetch orders:", error);
       }
     };
     fetchOrders();
+  }, [selectedDate]);
 
+  useEffect(() => {
     const eventSource = new EventSource('/api/orders/stream');
     eventSource.addEventListener('new_order', (event) => {
       const newOrder = JSON.parse(event.data);
+      const date = newOrder.date || getTodayString();
       setAllOrders(prev => {
-        const date = getTodayString();
         const updatedOrders = [...(prev[date] || []), newOrder].sort((a, b) => a.customerName.localeCompare(b.customerName));
         return { ...prev, [date]: updatedOrders };
       });
@@ -55,19 +68,19 @@ const App: React.FC = () => {
 
     eventSource.addEventListener('update_order', (event) => {
       const updatedOrder = JSON.parse(event.data);
+      const date = updatedOrder.date || getTodayString();
       setAllOrders(prev => {
-        const date = getTodayString();
         const updatedOrders = (prev[date] || []).map(o => o.id === updatedOrder.id ? updatedOrder : o).sort((a, b) => a.customerName.localeCompare(b.customerName));
         return { ...prev, [date]: updatedOrders };
       });
     });
 
     eventSource.addEventListener('delete_order', (event) => {
-      const { id } = JSON.parse(event.data);
+      const { id, date } = JSON.parse(event.data);
+      const orderDate = date || getTodayString();
       setAllOrders(prev => {
-        const date = getTodayString();
-        const updatedOrders = (prev[date] || []).filter(o => o.id !== id);
-        return { ...prev, [date]: updatedOrders };
+        const updatedOrders = (prev[orderDate] || []).filter(o => o.id !== id);
+        return { ...prev, [orderDate]: updatedOrders };
       });
     });
 
@@ -99,7 +112,7 @@ const App: React.FC = () => {
       await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(order),
+        body: JSON.stringify({ ...order, date: selectedDate }),
       });
     } catch (error) {
       console.error("Failed to add order:", error);
@@ -134,7 +147,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
-      <NavigationBar isAdmin={isAdmin} onToggleAdmin={handleAdminToggle} />
+      <NavigationBar isAdmin={isAdmin} onToggleAdmin={handleAdminToggle} theme={theme} toggleTheme={toggleTheme} />
       <main className="p-4 md:p-8">
         <header className="text-center mb-10 pt-8 md:pt-0">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-500 to-red-600 bg-clip-text text-transparent">

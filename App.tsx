@@ -155,6 +155,19 @@ const App: React.FC = () => {
                         onEditOrder={handleEditOrder}
                         isAdmin={isAdmin}
                         selectedDate={selectedDate}
+                        onImportOrders={async (importedOrders) => {
+                          for (const order of importedOrders) {
+                            try {
+                              await fetch('/api/orders', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(order),
+                              });
+                            } catch (error) {
+                              console.error('Failed to import order:', error);
+                            }
+                          }
+                        }}
                     />
                   </div>
                 </div>

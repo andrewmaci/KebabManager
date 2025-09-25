@@ -57,17 +57,18 @@ export const OrderList: React.FC<OrderListProps> = ({ orders, onDeleteOrder, onE
     setIsGeneratingPdf(true);
 
     try {
-      const doc = new jsPDF();
-      
+      const doc = new jsPDF({
+        // orientation, unit, format, putOnlyUsedFonts, encoding
+        putOnlyUsedFonts: true,
+      });
+      doc.setFont('helvetica', 'normal');
       doc.setFontSize(20);
-      doc.text("Kebab Order Report", 14, 22);
-      
+      doc.text("Kebab Order Report", 14, 22, { encoding: 'UTF-8' });
       doc.setFontSize(10);
-      doc.text(`Orders for: ${selectedDate}`, 14, 30);
-      
+      doc.text(`Orders for: ${selectedDate}`, 14, 30, { encoding: 'UTF-8' });
       autoTable(doc, {
         startY: 35,
-        head: [['Imie', 'Typ', 'Rozmiar', 'Sos', 'Mieso']],
+        head: [['Imię', 'Typ', 'Rozmiar', 'Sos', 'Mięso']],
         body: orders.map(order => [
           order.customerName,
           order.kebabType,
@@ -77,8 +78,8 @@ export const OrderList: React.FC<OrderListProps> = ({ orders, onDeleteOrder, onE
         ]),
         theme: 'grid',
         headStyles: { fillColor: '#d97706' }, // amber-600
+        styles: { font: 'helvetica', fontStyle: 'normal', encoding: 'UTF-8' },
       });
-
       doc.save(`kebab-order-report-${selectedDate}.pdf`);
     } catch (error) {
         console.error("Failed to generate PDF:", error);

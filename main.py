@@ -1,5 +1,6 @@
 import asyncio
 import json
+import os
 import uuid
 from typing import List
 
@@ -9,6 +10,7 @@ from fastapi.responses import StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from starlette.responses import FileResponse
+from google.cloud import firestore
 
 # --- Models ---
 class KebabOrderData(BaseModel):
@@ -21,8 +23,12 @@ class KebabOrderData(BaseModel):
 class KebabOrder(KebabOrderData):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
 
-# --- In-memory database & SSE Client Queues ---
-db: List[KebabOrder] = []
+# --- Firestore Client ---
+# Initialize Firestore client
+db = firestore.Client()
+orders_collection = db.collection('orders')
+
+# --- SSE Client Queues ---
 sse_client_queues: List[asyncio.Queue] = []
 
 # --- FastAPI app ---
@@ -65,37 +71,42 @@ async def order_stream(request: Request):
 
 # --- Standard API Routes ---
 @app.get("/api/orders", response_model=List[KebabOrder])
-async def get_orders():
-    return db
+def get_orders():
+    orders = []
+    for doc in orders_collection.stream():
+        orders.append(KebabOrder(**doc.to_dict()))
+    return orders
 
 @app.post("/api/orders", response_model=KebabOrder)
 async def add_order(order_data: KebabOrderData):
     new_order = KebabOrder(**order_data.dict())
-    db.append(new_order)
+    orders_collection.document(new_order.id).set(new_order.dict())
     # Notify all clients of the new order
     await send_update("new_order", new_order.dict())
     return new_order
 
 @app.put("/api/orders/{order_id}", response_model=KebabOrder)
 async def edit_order(order_id: str, order_data: KebabOrderData):
-    for i, order in enumerate(db):
-        if order.id == order_id:
-            updated_order = KebabOrder(id=order_id, **order_data.dict())
-            db[i] = updated_order
-            # Notify all clients of the update
-            await send_update("update_order", updated_order.dict())
-            return updated_order
-    raise HTTPException(status_code=404, detail="Order not found")
+    doc_ref = orders_collection.document(order_id)
+    if not doc_ref.get().exists:
+        raise HTTPException(status_code=404, detail="Order not found")
+    
+    updated_order = KebabOrder(id=order_id, **order_data.dict())
+    doc_ref.set(updated_order.dict())
+    # Notify all clients of the update
+    await send_update("update_order", updated_order.dict())
+    return updated_order
 
 @app.delete("/api/orders/{order_id}")
 async def delete_order(order_id: str):
-    for i, order in enumerate(db):
-        if order.id == order_id:
-            del db[i]
-            # Notify all clients of the deletion
-            await send_update("delete_order", {"id": order_id})
-            return {"message": "Order deleted"}
-    raise HTTPException(status_code=404, detail="Order not found")
+    doc_ref = orders_collection.document(order_id)
+    if not doc_ref.get().exists:
+        raise HTTPException(status_code=404, detail="Order not found")
+        
+    doc_ref.delete()
+    # Notify all clients of the deletion
+    await send_update("delete_order", {"id": order_id})
+    return {"message": "Order deleted"}
 
 # --- Static Files and App Serving ---
 app.mount("/assets", StaticFiles(directory="static/assets"), name="assets")

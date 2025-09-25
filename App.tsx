@@ -28,21 +28,34 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch(`/api/orders?date=${selectedDate}`);
+        const response = await fetch('/api/orders');
         const orders: KebabOrder[] = await response.json();
-        setAllOrders(prev => ({ ...prev, [selectedDate]: orders }));
+        const ordersByDate = orders.reduce((acc, order) => {
+          const date = order.date;
+          if (!acc[date]) {
+            acc[date] = [];
+          }
+          acc[date].push(order);
+          return acc;
+        }, {} as { [key: string]: KebabOrder[] });
+
+        for (const date in ordersByDate) {
+          ordersByDate[date].sort((a, b) => a.customerName.localeCompare(b.customerName));
+        }
+
+        setAllOrders(ordersByDate);
       } catch (error) {
         console.error("Failed to fetch orders:", error);
       }
     };
     fetchOrders();
-  }, [selectedDate]);
+  }, []);
 
   useEffect(() => {
     const eventSource = new EventSource('/api/orders/stream');
     eventSource.addEventListener('new_order', (event) => {
       const newOrder = JSON.parse(event.data);
-      const date = newOrder.date || getTodayString();
+      const date = newOrder.date;
       setAllOrders(prev => {
         const updatedOrders = [...(prev[date] || []), newOrder].sort((a, b) => a.customerName.localeCompare(b.customerName));
         return { ...prev, [date]: updatedOrders };
@@ -51,7 +64,7 @@ const App: React.FC = () => {
 
     eventSource.addEventListener('update_order', (event) => {
       const updatedOrder = JSON.parse(event.data);
-      const date = updatedOrder.date || getTodayString();
+      const date = updatedOrder.date;
       setAllOrders(prev => {
         const updatedOrders = (prev[date] || []).map(o => o.id === updatedOrder.id ? updatedOrder : o).sort((a, b) => a.customerName.localeCompare(b.customerName));
         return { ...prev, [date]: updatedOrders };
@@ -60,7 +73,7 @@ const App: React.FC = () => {
 
     eventSource.addEventListener('delete_order', (event) => {
       const { id, date } = JSON.parse(event.data);
-      const orderDate = date || getTodayString();
+      const orderDate = date;
       setAllOrders(prev => {
         const updatedOrders = (prev[orderDate] || []).filter(o => o.id !== id);
         return { ...prev, [orderDate]: updatedOrders };

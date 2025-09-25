@@ -3,8 +3,7 @@ import type { KebabOrder, KebabOrderData } from '../types';
 import { OrderItem } from './OrderItem';
 import { EmptyStateIcon } from './icons/EmptyStateIcon';
 import { PdfIcon } from './icons/PdfIcon';
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
+
 
 interface OrderListProps {
   orders: KebabOrder[];
@@ -52,40 +51,30 @@ export const OrderList: React.FC<OrderListProps> = ({ orders, onDeleteOrder, onE
     }
   };
 
-  const handleGeneratePdf = () => {
+  const handleGeneratePdf = async () => {
     if (isGeneratingPdf || orders.length === 0) return;
     setIsGeneratingPdf(true);
-
     try {
-      const doc = new jsPDF({
-        // orientation, unit, format, putOnlyUsedFonts, encoding
-        putOnlyUsedFonts: true,
+      const response = await fetch('/api/orders/pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orders),
       });
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(20);
-      doc.text("Kebab Order Report", 14, 22, { encoding: 'UTF-8' });
-      doc.setFontSize(10);
-      doc.text(`Orders for: ${selectedDate}`, 14, 30, { encoding: 'UTF-8' });
-      autoTable(doc, {
-        startY: 35,
-        head: [['Imię', 'Typ', 'Rozmiar', 'Sos', 'Mięso']],
-        body: orders.map(order => [
-          order.customerName,
-          order.kebabType,
-          order.size,
-          order.sauce,
-          order.meatType
-        ]),
-        theme: 'grid',
-        headStyles: { fillColor: '#d97706' }, // amber-600
-        styles: { font: 'helvetica', fontStyle: 'normal', encoding: 'UTF-8' },
-      });
-      doc.save(`kebab-order-report-${selectedDate}.pdf`);
+      if (!response.ok) throw new Error('Błąd generowania PDF');
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `kebab-order-report-${selectedDate}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
     } catch (error) {
-        console.error("Failed to generate PDF:", error);
-        alert("An error occurred while generating the PDF. Please try again.");
+      console.error('Failed to generate PDF:', error);
+      alert('An error occurred while generating the PDF. Please try again.');
     } finally {
-        setIsGeneratingPdf(false);
+      setIsGeneratingPdf(false);
     }
   };
 

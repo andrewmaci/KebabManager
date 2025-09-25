@@ -1,58 +1,10 @@
-from io import BytesIO
-from fastapi.responses import StreamingResponse
-from reportlab.lib.pagesizes import A4
-from reportlab.pdfgen import canvas
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
-from reportlab.lib import colors
-from reportlab.lib.styles import getSampleStyleSheet
-# --- Static Files and App Serving ---
-@app.post("/api/orders/pdf")
-async def generate_orders_pdf(orders: list[KebabOrderData]):
-    buffer = BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=A4)
-    styles = getSampleStyleSheet()
-    elements = []
-
-    # Title
-    elements.append(Paragraph("Kebab Order Report", styles['Title']))
-    # Add date subtitle if available
-    if orders and hasattr(orders[0], 'date') and orders[0].date:
-        elements.append(Paragraph(f"Orders for: {orders[0].date}", styles['Normal']))
-    elements.append(Spacer(1, 12))
-
-    # Table headers (matching jsPDF)
-    data = [["Imię", "Typ", "Rozmiar", "Sos", "Mięso"]]
-    for order in orders:
-        data.append([
-            order.customerName,
-            order.kebabType,
-            order.size,
-            order.sauce,
-            order.meatType
-        ])
-
-    table = Table(data, repeatRows=1)
-    table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.Color(0.85, 0.47, 0.02)),  # amber-600
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
-        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
-        ('FONTSIZE', (0, 0), (-1, -1), 10),
-        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
-        ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
-    ]))
-    elements.append(table)
-
-    doc.build(elements)
-    buffer.seek(0)
-    return StreamingResponse(buffer, media_type="application/pdf", headers={"Content-Disposition": "attachment; filename=orders.pdf"})
 import asyncio
 import json
 import os
 import uuid
 from typing import List
-
+from io import BytesIO
+from fastapi.responses import StreamingResponse
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
@@ -60,7 +12,11 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from starlette.responses import FileResponse
 from google.cloud import firestore
-
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet
 # --- Models ---
 class KebabOrderData(BaseModel):
     customerName: str
@@ -137,6 +93,49 @@ async def add_order(order_data: KebabOrderData):
     # Notify all clients of the new order
     await send_update("new_order", new_order.dict())
     return new_order
+
+# --- Static Files and App Serving ---
+@app.post("/api/orders/pdf")
+async def generate_orders_pdf(orders: list[KebabOrderData]):
+    buffer = BytesIO()
+    doc = SimpleDocTemplate(buffer, pagesize=A4)
+    styles = getSampleStyleSheet()
+    elements = []
+
+    # Title
+    elements.append(Paragraph("Kebab Order Report", styles['Title']))
+    # Add date subtitle if available
+    if orders and hasattr(orders[0], 'date') and orders[0].date:
+        elements.append(Paragraph(f"Orders for: {orders[0].date}", styles['Normal']))
+    elements.append(Spacer(1, 12))
+
+    # Table headers (matching jsPDF)
+    data = [["Imię", "Typ", "Rozmiar", "Sos", "Mięso"]]
+    for order in orders:
+        data.append([
+            order.customerName,
+            order.kebabType,
+            order.size,
+            order.sauce,
+            order.meatType
+        ])
+
+    table = Table(data, repeatRows=1)
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.Color(0.85, 0.47, 0.02)),  # amber-600
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
+        ('FONTSIZE', (0, 0), (-1, -1), 10),
+        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+        ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
+    ]))
+    elements.append(table)
+
+    doc.build(elements)
+    buffer.seek(0)
+    return StreamingResponse(buffer, media_type="application/pdf", headers={"Content-Disposition": "attachment; filename=orders.pdf"})
 
 @app.put("/api/orders/{order_id}", response_model=KebabOrder)
 async def edit_order(order_id: str, order_data: KebabOrderData):

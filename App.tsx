@@ -6,6 +6,7 @@ import type { KebabOrder, KebabOrderData } from './types';
 import { DateSelector } from './components/DateSelector';
 import { NavigationBar } from './components/NavigationBar';
 import Statistics from './components/Statistics';
+import { useTheme } from './hooks/useTheme';
 
 const ADMIN_PASSWORD = 'kebabadmin';
 
@@ -22,25 +23,7 @@ const App: React.FC = () => {
       return false;
     }
   });
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'light';
-    }
-    return 'light';
-  });
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const fetchOrders = async () => {

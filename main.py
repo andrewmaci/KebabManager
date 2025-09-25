@@ -124,15 +124,27 @@ async def generate_orders_pdf(orders: list[KebabOrderData]):
         elements.append(Paragraph(f"Orders for: {orders[0].date}", styles['Normal']))
     elements.append(Spacer(1, 12))
 
-    # Table headers (matching jsPDF)
-    data = [["Imię", "Typ", "Rozmiar", "Sos", "Mięso"]]
+
+    # Table headers (matching jsPDF) - wrap in Paragraph for Unicode support
+    header_style = styles['Normal'].clone('TableHeader')
+    header_style.fontName = FONT_NAME
+    header_style.fontSize = 11
+    header_style.alignment = 1  # center
+    cell_style = styles['Normal'].clone('TableCell')
+    cell_style.fontName = FONT_NAME
+    cell_style.fontSize = 11
+    cell_style.alignment = 1  # center
+
+    data = [
+        [Paragraph(text, header_style) for text in ["Imie", "Typ", "Rozmiar", "Sos", "Mieso"]]
+    ]
     for order in orders:
         data.append([
-            order.customerName,
-            order.kebabType,
-            order.size,
-            order.sauce,
-            order.meatType
+            Paragraph(str(order.customerName), cell_style),
+            Paragraph(str(order.kebabType), cell_style),
+            Paragraph(str(order.size), cell_style),
+            Paragraph(str(order.sauce), cell_style),
+            Paragraph(str(order.meatType), cell_style)
         ])
 
     # Calculate column widths to span the page width

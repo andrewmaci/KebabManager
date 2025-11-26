@@ -6,7 +6,6 @@ import type { KebabOrder, KebabOrderData } from './types';
 import { DateSelector } from './components/DateSelector';
 import { NavigationBar } from './components/NavigationBar';
 import Statistics from './components/Statistics';
-import { useTheme } from './hooks/useTheme';
 
 const ADMIN_PASSWORD = 'kebabadmin';
 
@@ -94,7 +93,6 @@ const App: React.FC = () => {
       return false;
     }
   });
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -220,7 +218,7 @@ const App: React.FC = () => {
       
 
       
-      <NavigationBar isAdmin={isAdmin} onToggleAdmin={handleAdminToggle} theme={theme} toggleTheme={toggleTheme} />
+      <NavigationBar isAdmin={isAdmin} onToggleAdmin={handleAdminToggle} />
       <main className="p-4 md:p-8 relative z-10">
         <header className="text-center mb-10 pt-8 md:pt-0">
           {/* Festive wreath around logo */}

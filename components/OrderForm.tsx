@@ -57,8 +57,12 @@ export const OrderForm: React.FC<OrderFormProps> = ({ onAddOrder, isAdding }) =>
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg sticky top-8">
-      <h2 className="text-2xl font-bold mb-6 text-slate-800 dark:text-slate-100">Dodaj nowe zamówienie</h2>
+    <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg sticky top-20 border-2 border-red-100 dark:border-red-900/30 relative overflow-hidden">
+      {/* 🎄 Festive corner decoration */}
+      <h2 className="text-2xl font-bold mb-6 text-slate-800 dark:text-slate-100 flex items-center gap-2">
+        <span>Dodaj nowe zamówienie</span>
+        <span className="text-lg">🎄</span>
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <InputField id="customerName" label="Twoje imię" value={customerName} onChange={(e) => setCustomerName(e.target.value)} placeholder="np. Jan" />
         <InputField id="kebabType" label="Typ kebaba" value={kebabType} onChange={(e) => setKebabType(e.target.value)} placeholder="np. Pita, Bułka, Tortilla" />

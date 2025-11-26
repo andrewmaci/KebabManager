@@ -1,0 +1,121 @@
+/* 🎄 Christmas/Winter Theme Animations */
+
+/* ❄️ Snowfall Animation */
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(25vh) translateX(10px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(50vh) translateX(-10px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(75vh) translateX(15px) rotate(270deg);
+  }
+  100% {
+    transform: translateY(110vh) translateX(-5px) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+.animate-snowfall {
+  animation: snowfall linear infinite;
+}
+
+/* ✨ Twinkling Lights Animation */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 1.5s ease-in-out infinite;
+}
+
+/* 🎄 Slow Bounce for Decorations */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+/* 🎅 Gentle Sway Animation */
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-sway {
+  animation: sway 4s ease-in-out infinite;
+}
+
+/* ⭐ Glow Animation */
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* 🎄 Christmas Card-like frost border effect */
+.frost-border {
+  position: relative;
+}
+
+.frost-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(200, 220, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* ❄️ Winter gradient text */
+.winter-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 🎄 Festive button hover glow */
+.festive-glow:hover {
+  box-shadow: 
+    0 0 10px rgba(220, 38, 38, 0.4),
+    0 0 20px rgba(22, 163, 74, 0.3),
+    0 0 30px rgba(220, 38, 38, 0.2);
+}
+

@@ -98,9 +98,13 @@ export const OrderItem: React.FC<OrderItemProps> = ({ order, onDeleteOrder, onEd
   }
 
   return (
-    <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700 animate-fade-in" style={{ animationDelay: `${index * 50}ms` }}>
+    <div className="bg-gradient-to-r from-slate-50 via-red-50/30 to-slate-50 dark:from-slate-700/50 dark:via-red-900/10 dark:to-slate-700/50 p-4 rounded-lg border border-red-100 dark:border-red-900/30 animate-fade-in relative" style={{ animationDelay: `${index * 50}ms` }}>
+        {/* 🎄 Small festive accent */}
+        <div className="absolute top-1 right-2 text-sm opacity-50">❄️</div>
         <div className="flex justify-between items-start">
-            <h3 className="font-bold text-lg text-amber-700 dark:text-amber-500">{order.customerName}</h3>
+            <h3 className="font-bold text-lg text-red-700 dark:text-red-400 flex items-center gap-1">
+              {order.customerName}
+            </h3>
             {isAdmin && (
                 <div className="flex items-center gap-1 flex-shrink-0 ml-2">
                     <button

@@ -82,10 +82,13 @@ const Statistics: React.FC<StatisticsProps> = ({ allOrders }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {/* Leaderboard */}
-      <div className="md:col-span-1 bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg">
+      <div className="md:col-span-1 bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg border-2 border-red-100 dark:border-red-900/30 relative overflow-hidden">
+        {/* 🎄 Festive decorations */}
         <div className="flex items-center gap-3 mb-4">
-          <FaPoll className="w-7 h-7 text-amber-500" />
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Mistrzowie Bedasa</h2>
+          <FaPoll className="w-7 h-7 text-red-500" />
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+            <span>Mistrzowie Bedasa</span>
+          </h2>
         </div>
         <ol className="space-y-3" style={{maxHeight: 'calc(100vh - 250px)', overflowY: 'auto'}}>
           {leaderboardData.map((entry, index) => (
@@ -106,13 +109,15 @@ const Statistics: React.FC<StatisticsProps> = ({ allOrders }) => {
       {/* Stats and Chart Column */}
       <div className="md:col-span-1 space-y-8">
         {/* Total Stats */}
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg text-center">
-            <h3 className="text-lg font-semibold text-slate-500 dark:text-slate-400">Całkowita liczba zamówionych kebabów</h3>
-            <p className="text-5xl font-bold text-amber-600 dark:text-amber-500 mt-2">{totalKebabCount}</p>
+        <div className="bg-gradient-to-r from-red-50 via-white to-green-50 dark:from-red-900/20 dark:via-slate-800 dark:to-green-900/20 p-6 rounded-xl shadow-lg text-center border-2 border-green-100 dark:border-green-900/30 relative overflow-hidden">
+            <h3 className="text-lg font-semibold text-slate-500 dark:text-slate-400">
+              Całkowita liczba zamówionych kebabów 
+            </h3>
+            <p className="text-5xl font-bold text-red-600 dark:text-red-400 mt-2">{totalKebabCount}</p>
         </div>
 
         {/* Chart */}
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg border-2 border-red-100 dark:border-red-900/30 relative overflow-hidden">
           <div className="flex justify-between items-center mb-4">
               <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">Zjedzone kebaby</h3>
               <div className="flex gap-1 bg-slate-200 dark:bg-slate-700 p-1 rounded-md">

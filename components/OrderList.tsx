@@ -79,9 +79,12 @@ export const OrderList: React.FC<OrderListProps> = ({ orders, onDeleteOrder, onE
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg min-h-[300px]">
+    <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg min-h-[300px] border-2 border-green-100 dark:border-green-900/30 relative overflow-hidden">
+      {/* 🎄 Festive corner decorations */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Aktualna lista zamówień</h2>
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+          <span>Aktualna lista zamówień</span>
+        </h2>
         <div className="flex gap-2">
           {orders.length > 0 && (
             <button
@@ -119,6 +122,7 @@ export const OrderList: React.FC<OrderListProps> = ({ orders, onDeleteOrder, onE
 
       {orders.length === 0 ? (
         <div className="text-center py-10 px-4">
+          <div className="text-6xl mb-4 animate-bounce">🎄</div>
           <EmptyStateIcon className="mx-auto h-20 w-20 text-slate-400 dark:text-slate-500" />
           <p className="mt-4 text-slate-500 dark:text-slate-400 font-medium">Brak zamówień na ten dzień.</p>
           <p className="text-slate-400 dark:text-slate-500 text-sm">Dodaj zamówienie, aby je tutaj zobaczyć!</p>

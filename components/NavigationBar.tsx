@@ -39,9 +39,12 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ isAdmin, onToggleA
   const inactiveLinkStyles = "text-slate-600 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-700/50";
 
   return (
-    <header className="bg-slate-100/80 dark:bg-slate-800/80 backdrop-blur-lg shadow-md sticky top-0 z-40">
-      <nav className="container mx-auto px-4 flex justify-between items-center h-14">
-        <div />
+    <header className="bg-gradient-to-r from-red-900/10 via-slate-100/80 to-green-900/10 dark:from-red-900/20 dark:via-slate-800/80 dark:to-green-900/20 backdrop-blur-lg shadow-md sticky top-0 z-40 border-b-2 border-red-200/50 dark:border-red-800/30">
+      <nav className="container mx-auto px-4 flex items-center h-14">
+        {/* Left spacer for balance */}
+        <div className="flex-1" />
+        
+        {/* Centered navigation links */}
         <ul className="flex items-center justify-center gap-2">
           <li>
             <NavLink 
@@ -62,7 +65,9 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ isAdmin, onToggleA
             </NavLink>
           </li>
         </ul>
-        <div className="flex items-center gap-4">
+        
+        {/* Right-aligned toggle buttons */}
+        <div className="flex-1 flex items-center justify-end gap-4">
           <AdminToggle isAdmin={isAdmin} onToggle={onToggleAdmin} />
           <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
         </div>

@@ -200,4 +200,9 @@ app.mount("/assets", StaticFiles(directory="static/assets"), name="assets")
 
 @app.get("/{full_path:path}")
 async def serve_react_app(full_path: str):
+    # Check if the requested file exists in static folder (e.g., logo.png)
+    static_file = os.path.join("static", full_path)
+    if full_path and os.path.isfile(static_file):
+        return FileResponse(static_file)
+    # Otherwise serve the React app
     return FileResponse("static/index.html")

@@ -6,14 +6,11 @@ from typing import List
 from io import BytesIO
 from fastapi.responses import StreamingResponse
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from starlette.responses import FileResponse
 from google.cloud import firestore
 from reportlab.lib.pagesizes import A4
-from reportlab.pdfgen import canvas
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
@@ -33,7 +30,9 @@ class KebabOrder(KebabOrderData):
 
 # --- Firestore Client ---
 # Initialize Firestore client
-db = firestore.Client()
+# When FIRESTORE_EMULATOR_HOST is set, the client automatically connects to emulator
+project_id = os.environ.get('GOOGLE_CLOUD_PROJECT', 'kebab-local-dev')
+db = firestore.Client(project=project_id)
 orders_collection = db.collection('orders')
 
 # --- SSE Client Queues ---
@@ -170,14 +169,28 @@ async def generate_orders_pdf(orders: list[KebabOrderData]):
     buffer.seek(0)
     return StreamingResponse(buffer, media_type="application/pdf", headers={"Content-Disposition": "attachment; filename=orders.pdf"})
 
-@app.put("/api/orders/{order_id}", response_model=KebabOrder)
+@app.patch("/api/orders/{order_id}", response_model=KebabOrder)
 async def edit_order(order_id: str, order_data: KebabOrderData):
     doc_ref = orders_collection.document(order_id)
-    if not doc_ref.get().exists:
+    doc = doc_ref.get()
+    
+    if not doc.exists:
         raise HTTPException(status_code=404, detail="Order not found")
     
-    updated_order = KebabOrder(id=order_id, **order_data.dict())
+    # Get existing data to preserve fields not sent by client
+    existing_data = doc.to_dict()
+    
+    # Prepare update data, preserving date if not provided
+    update_data = order_data.dict()
+    if update_data.get('date') is None:
+        update_data['date'] = existing_data.get('date')
+    
+    # Create updated order with preserved fields
+    updated_order = KebabOrder(id=order_id, **update_data)
+    
+    # Update the document (still using set for full replacement, but with preserved data)
     doc_ref.set(updated_order.dict())
+    
     # Notify all clients of the update
     await send_update("update_order", updated_order.dict())
     return updated_order

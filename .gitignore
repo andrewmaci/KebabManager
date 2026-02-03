@@ -23,5 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 .env
+.env.local
+.env.*.local
 .mypy_cache
 *.tar
+
+# Firestore emulator data (if not using named volumes)
+.firestore/

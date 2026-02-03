@@ -118,7 +118,7 @@ const App: React.FC = () => {
   const handleEditOrder = async (id: string, data: KebabOrderData) => {
     try {
       await fetch(`/api/orders/${id}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });

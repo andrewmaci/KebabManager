@@ -1,0 +1,343 @@
+date,customerName,kebabType,size,sauce,meatType,id
+2025-07-25,Andrzej,Tortilla,Standard,Mieszany,Kurczak,007b528a-d933-4a58-a4c8-886dbdeb434f
+2025-11-18,Szymon,Tortilla,Standard,Mieszany,Kurczak,009ee800-aceb-4a8d-a034-6e11734b34d1
+2025-08-14,Michal,Amerykanski,Standard,Lagodny,Kurczak,00b34433-50d7-42c7-9cbf-d7679abbbb2a
+2025-09-26,Adas,Amerykański ,XL,MIeszany ,kurczak ,0112e53c-0b01-4eac-9a3b-b0fd333eced9
+2025-08-08,Lukasz,Gruby bula,XL,Mieszany,Wolowina,017bb70c-0d22-45a9-a1cc-2c82e554711f
+2025-07-11,Michal,Amerykanski,Standard,Lagodny,Kurczak,026aa841-cb8c-4fc5-8e52-ed8f01bc5f1d
+2026-01-15,Roman,Amerykanski,Standard,Mieszany,Wolowina,026cb6b0-7b56-4720-b086-84da3ee48b55
+2025-10-31,Dawid,Tortilla,Standard,Mieszany,wołowina,029c1826-dfdc-40de-b239-8b69723fb135
+2025-09-19,Mati P,Amerykanski,Standard,Mieszany,Wolowina,03603e89-28fa-4048-ac16-32287f3c6c77
+2025-11-14,Michal,Amerykanski,Standard,Ulegly,Kurczak,03a1e881-ac6b-4309-85ca-b1bc7c2e5b85
+2025-09-24,Mati P,Tortilla,Standard,Ostry,Kurczak,04697672-8967-4cba-a9ff-cb4e2d7a7890
+2025-09-17,Adas,Amerykanski,Standard,Mieszany,Kurczak,065d3d2d-468d-405e-a681-ac7acbe15625
+2025-11-28,Andrzej,Tortilla,Standard,Mieszany,Wolowina,06c773b1-3d0d-4d9e-be3d-a6c01835cf57
+2025-09-12,Andrzej,Amerykanski,XL,Mieszany,Wolowina,0777d753-bb29-424a-8f3d-e2226803b702
+2025-08-04,Andrzej,Tortilla,Standard,Mieszany,Wolowina,07a23f18-d19c-45aa-b360-d22f3f825fbe
+2025-12-02,Mati P,Tortilla,Standard,Ostry,Kurczak,07e652a4-1dc4-408f-ab8a-acf537b1f06b
+2025-10-17,Mati P,samo menso,Standard,ostry,kurczak ,099eab87-be66-4ef3-9a05-b2915503df1c
+2025-10-10,Mati P,Tortilla ,Standard,Ostry,Kurczak,0ab1d81e-f6a6-4842-aeb9-61834ee859fc
+2025-12-02,Adas,Amerykański ,Standard,Mieszany,Wołowina ,0aeaaf82-18bc-4d89-9fe8-decf86685087
+2025-10-17,Roman,Amerykanski,XL,Mieszany,Wołowina,0b44f221-ee84-4237-882f-8c31e42b02c7
+2025-09-26,Michal,Amerykanski,Standard,Lagodny,Kurczak,0b969c3b-430f-480c-9682-45249bcd617b
+2026-01-09,Kamil,Tortilla,Standard,Mieszany,Kurczak,0c0bb991-8f61-4e38-b116-da1d58b5b24d
+2025-07-11,Dawid,Amerykanski,Standard,Mieszany,Wolowina,0c2f4707-732f-4596-ab4a-aacaa6c32ef7
+2025-10-03,Szymon,Amerykański,Standard,Mieszany,Kurczak,0d820e42-a840-48c1-951e-8db29b32e2e3
+2026-01-23,Andrzej,Amerykanski,Standard,Mieszany,Wolowina,0e969632-b177-4ca1-abb4-51e1f8c22f23
+2026-01-09,Dawid,Tortilla,Standard,Mieszany,wolowina,0f63d89a-e542-4552-9c00-891151d8e26d
+2025-08-14,Dawid,Tortilla,XL,Mieszany,Wolowina,10c20c7f-bbbb-47a0-99fb-bee5a05832de
+2025-09-19,Artur,Pita ameryka,Standard,Mieszany,Wolowina,113c4087-0a39-4e73-bb21-e0cd1e966cd6
+2025-11-24,Szymon,Tortilla,Standard,Mieszany,Kurczak,115dcff7-e8ed-498e-a4b5-fec37fc3819c
+2025-09-26,Mati P,Tortilla ,Standard,Ostry,Kurczak,117a2b68-86bc-45cf-b296-91661d6e5d58
+2025-10-10,Szymon,Amerykański,Standard,Mieszany,Kurczak,11a25c3a-1273-493b-b43c-b37d51db4292
+2026-01-16,Kazik,Amerykański,XL,Ostry,Kurczak,1244425a-27ad-4831-86f4-2fa9c9c61ea9
+2026-01-30,Alicja,Tortilla,Standard,bez sosu,Kurczak,134d9c19-f8df-4052-85d5-6119db0c15e4
+2025-09-26,Mateusz,Amerykanski,XL,Mieszany,Wolowina,139c45e2-efee-4083-80f8-8118963eb354
+2025-11-28,Adas,amerykanski,Standard,Mieszany ,Wolowina,139d015b-bc05-40b4-800e-24bbec881244
+2025-12-12,Kazik,Amerykański,Standard,Ostry,Kurczak,1451ff53-9390-4d52-a77f-809682b585f5
+2025-09-26,Milosz,Tortilla,Standard,Mieszany,Wolowina,1476757c-f985-49c1-b7c0-d8115d731d1b
+2025-10-29,Dawid,surupki,Standard,Mieszany,wołowina,1575cd9a-e1dc-4c5a-9d47-8288c094ac7b
+2025-09-05,Artur,Pita Ameryka,Standard,Mieszany,Wolowina,158b4e8d-696d-4b52-b22f-dfdc3c83e56a
+2025-11-26,Roman,Tortilla,Standard,Mieszany,Wołowina,169af4c2-f994-4391-a53e-57e444949110
+2025-10-03,Andrzej,Amerykanski,Standard,Mieszany,Wolowina,16f9b804-19f0-4443-9cf9-d3b3a9151c9e
+2025-11-14,Kazik,Tortilla,XL,Ostry,Kurczak,1779bc80-a9a5-451a-bbc2-aca75125676a
+2026-01-26,Kamil,Tortilla,Standard,Mieszany,Kurczak,17b556ed-37db-415b-a787-74bb4bea8ef1
+2026-01-09,Milosz,Tortilla,Standard,Mieszany,Wolowina,191ac650-7d13-455e-9eaa-d45f9e3ad920
+2026-01-30,Michal,pita Amerykanska,standard,Łagodny,Kurczak,192e6658-41db-4380-abe1-f9a0f185a42e
+2025-09-24,Andrzej,Tortilla,Standard,Mieszany,Kurczak,198f1a8c-9adb-49b3-90f4-566d57903bac
+2025-09-19,Roman,Amerykanski,XL,Mieszany,Wolowina,19d54002-c1a6-40ba-bc54-04a482679d0c
+2026-01-23,Kazik,Amerykański,XL,Ostry,Kurczak,19fa402e-7c35-475e-94af-38560a9542e9
+2025-09-19,Adas,Amerykanski,Standard,Mieszany,Kurczak,1c297e96-1041-4fa4-b2c4-6ad4bee4accd
+2025-10-31,Lukasz,Amerykanski,standard,mieszany,Wolowina,1c67a5a5-8657-4e5a-a78c-93b0e69068bc
+2025-10-31,Bartek,Gruby Amerykański,XL,Ostry,wołowina,1d1ed8e1-7b40-489e-a162-c0515adb72ed
+2025-10-24,Szymon,Tortilla,Standard,Mieszany,Kurczak,1d5335c9-5074-4862-9c3d-9533afd644d7
+2025-09-05,Lukasz,Tortilla,Standard,Mieszane,Kurczak,1d6e2f59-014d-470e-aaa5-c5eeecbadb21
+2025-09-17,Kazik,Amerykanski,standard,Ostry,Kurczak,1d7af9be-1858-4e7a-bad7-51647e00d24e
+2025-10-10,Roman,Tortilla,XL,Mieszany,Wołowina,1dde9ff0-8f7a-460d-8674-f7d1d673eb91
+2025-10-24,Dawid,amerykański,Standard,Mieszany,wołowina,1e0beb47-4b44-4623-8f54-cd05ef816600
+2025-10-03,Michal,Amerykanski,Standard,Łagodny,Kurczak,1eb6f1e8-5ea8-4bc8-a101-40b2dc20ff39
+2025-10-15,Adas,Amerykański ,Standard,MIeszany ,kurczak ,1eb9f969-2a22-4ccc-b70b-d8dfebdf1531
+2025-09-26,Roman,Amerykanski,Standard,Mieszany,Wolowina,1ec5dd2b-55a9-4f91-9211-4e29014bc566
+2025-09-19,Kamil,Tortilla,Standaed,Mieszany,Kurczak,21a489fd-b63d-4fd3-a694-c6435e9ec9af
+2026-01-27,Kazik,Amerykański,Standard,Ostry,Kurczak,21a499f1-c512-45b8-9dad-e442deadf20f
+2025-11-25,Kamil,Tortilla,Standard,Mieszany,Kurczak,21eeb850-ff64-40d3-9a45-de7d1d372117
+2026-01-26,Michal,box frytki i kurczak,standard,Łagodny,Kurczak,22014e9b-4ce6-47f9-9d17-e3c61d9a8ac9
+2025-10-03,Dawid,Amerykanski,Standard,Mieszany,wołowina,23996850-8242-4ffe-b875-85e309de9bb5
+2025-12-17,Kamil,Tortilla,Standard,Mieszany,Kurczak,23ea101a-33ff-42cd-a410-0c2aa859f56e
+2026-01-30,Kazik,Tortilla ,Standard,Ostry,Kurczak,264d974f-0105-4a9c-953c-5fb2b00cb9bf
+2025-09-25,Lukasz,Tortilla,Standard,Mieszany,Mieszane,266b839d-1892-46c3-a0b0-fe150c59d1cf
+2025-07-11,Andrzej,Tortilla,XL,Mieszany,Kurczak,2983ad63-5d5f-4c42-be08-0cf511f5801e
+2025-12-12,Roman,Amerykanski,Standard,Mieszany,Wołowina,29d61e0c-1642-4aef-84d1-c913af89f2a8
+2025-11-28,Kazik,Tortilla,XL,Ostry,Kurczak,2a2094ac-3394-4f92-8c00-58e7fb9c5d15
+2026-01-26,Dawid,Tortilla,Standard,Mieszany,wolowina,2a8081dd-1b1b-4053-944a-150892fd5d9f
+2026-01-16,Szymon,Tortilla,Standard,Mieszany,Kurczak,2abbc679-f883-4670-8775-062992f95d32
+2025-11-13,Adas,amerykanski,Standard,Mieszany ,Wolowina,2b286aa2-330f-4362-a593-4d8ef9f1a019
+2025-09-26,Kazik,Amerykanski,Standard,Ostry,Kurczak ,2bb8dabd-8543-4987-954d-84d0c4957ca5
+2025-10-23,Artur,Pita,Standard,Mieszany,Wołowina,2cc9162a-626f-4aa2-a80f-ed56b9be5db8
+2025-10-24,Mati P,BOX,Standard (bez surówke),Ostry,Mieszne,2cff1de9-8005-42a0-843e-b26d4c71555c
+2025-08-08,Andrzej,Tortilla,XL,Mieszany,Wolowina,3083797d-5083-4186-b0a6-cd3bcd178e19
+2025-10-24,Adas,BOX,Standard (bez surówke),Mieszany ,Mieszne,332782ff-4553-40fa-a05d-acb6a8de3a84
+2025-11-26,Michal,pita Amerykanska,standard,Łagodny,Kurczak,33655b3b-21f9-48dd-a343-6cea14d5d772
+2025-11-18,Mati P,Tortilla ,Standard,Ostry,Kurczak,35252672-73f4-4b81-a38d-79862421104c
+2026-01-13,Andrzej,Tortilla,Standard,Mieszany,Wolowina,357c06ec-b49c-47d4-8ac9-d0d241474c51
+2025-10-29,Roman,Amerykanski,Standard,Mieszany,Wołowina,37829e49-4a91-4cb2-8451-e598b17cce42
+2025-12-10,Abdul,kebab box (kurzak I frytki),standard,mieszany,Kurczak,37bf82d9-e08a-447a-aa18-dc2b4d903898
+2025-07-30,Mati P,Tortilla bez surowek,Standard,Ostry,Kurczak,37ecdbc1-cf63-4285-b19f-76c42ca55464
+2025-10-17,Andrzej,Amerykanski,XL,Mieszany,Wolowina,38afdb69-ead7-41e2-8e60-1e4b57552e22
+2025-11-21,Dawid,Tortilla,Standard,Mieszany,wolowina,38bb77b8-36cb-472f-bb9d-be947527d104
+2026-01-07,Kazik,Amerykański,XL,Ostry,Kurczak,38def29b-e7d2-477b-9c48-eb37e07bf2a5
+2025-10-24,Kamil,Tortilla,Standard,Mieszany,Kurczak,395a8fb7-167f-4a68-9d96-2d85fe4e79a6
+2025-07-11,Mati P,Amerykanski,Standard,Mieszany,Wolowina,3c41431b-029c-412b-b840-109bc660e1c0
+2025-09-25,Kamil,Tortilla,Standard,Ostry,Kurczak,3c6d3ba8-5260-4bd8-ac03-2aa67964e7ca
+2025-09-12,Kazik,Amerykanski,Standard,Ostry,Kurczak,3c6e7ada-c44f-4bcd-844b-5996146f0c1e
+2026-02-06,Roman,Amerykanski,Standard,Mieszany,Wolowina,3c8d9565-2be8-4da4-b6b5-56652a766ab0
+2026-01-30,Milosz,Tortilla,Standard,Mieszany,Wolowina,3ccc8eff-f033-4cf4-b893-554d2d103996
+2025-10-03,Roman,Amerykanski,XL,Mieszany,Wołowina,3d7a1f7e-c8c4-465f-95ee-60087314925b
+2025-10-23,Kazik,Amerykański,Standard,Ostry,Kurczak,3ec9e27e-5907-47b4-b5b8-c1ef7fc5d1b1
+2025-09-05,Abdul,Tortilla,Standard,Mieszane,Kurczak,3f780ac3-038a-4c97-b4b9-e2c8f75ed893
+2025-12-12,Milosz,Tortilla,Standard,Mieszany,Wolowina,3f969745-5293-49bf-9b94-7a56b2628fc3
+2025-10-23,Szymon,Tortilla,Standard,Mieszany,Kurczak,400922b3-5661-449f-84ee-fc137badba8d
+2025-11-05,Kazik,Tortilla,Standard,Ostry,Kurczak,400a8644-19d2-4147-a6f3-fc5b8602b3b5
+2025-08-08,Abdul,Tortilla,Standard,Mieszany,Kurczak,410d2685-ccf6-4d36-b5ed-b05707b40771
+2025-11-24,Kazik,Amerykański,Standard,Ostry,Kurczak,4204d803-bf70-4843-9b84-fca0abb22dec
+2025-09-24,Kazik,Amerykanski,Standard,Ostry,Kurczak,42c9703e-34f9-413d-9aa8-125449e738b2
+2025-12-12,Mati P,Pita,Standard,Ostry,Kurczak,42c9e1bc-8ae8-4a75-9e7e-3d2e7bd4a867
+2025-10-03,Kazik,Amerykański,Standard,Ostry,Kurczak ,42fb9cc5-eee6-4dde-b954-22f9464112e1
+2026-01-30,Roman,Amerykanski,Standard,Mieszany,Wolowina,4346af8c-6089-405e-8be8-ed0da2adcac8
+2026-02-06,Dawid,Amerykanski,Standard,Mieszany,wolowina,4382be24-798f-40e0-9e50-c2d092df8d13
+2025-12-09,Dawid,Tortilla,Standard,Mieszany,wolowina,43b4ad51-b167-43fb-8df4-3648b259ae32
+2025-08-14,Adas,Amerykanski,Standard,Mieszany,Kurczak,443f78a2-10d2-420e-877c-674ead9fde86
+2025-08-08,Alicja,Tortilla,Standard,Mieszany,Wolowina,448dc37b-0b74-4b8f-902b-fd33a8d8e4a1
+2025-10-10,Artur,pita amerykański,standard,mieszany,wolowina,44dad2a8-1061-43d2-b732-8e6595d11f26
+2025-11-28,Mati P,Tortilla ,Standard,Ostry,Kurczak,450d608e-4676-4aa3-bb08-db68c1ff7c89
+2025-11-19,Kamil,Tortilla,Standard,Mieszany,Kurczak,45164ff3-ce5c-440b-a145-736040163b9f
+2025-07-11,Mateusz,Amerykanski,Standard,Mieszany,Wolowina,4613cb6f-8038-4028-bbcf-8a105b2ed878
+2025-10-10,Andrzej,Amerykanski,XL,Mieszany,Wolowina,4676c8c1-101b-4f3f-97bf-32302ef75c04
+2026-01-23,Milosz,Tortilla,Standard,Mieszany,Wolowina,4a6051be-28a7-4285-8e71-21c698c64523
+2025-09-26,Andrzej,Amerykanski,XL,Mieszany,Wolowina,4b78ec0a-5785-463b-9b86-d9d805389314
+2025-08-14,Mateusz,Amerykanski,Standard,Mieszany,Wolowina,4c2f9765-e6d0-416a-8e37-1c89ec98653c
+2025-10-23,Roman,Tortilla,Standard,Mieszany,Wołowina,4c61f77e-f912-41de-b9d0-3afe8fed92e8
+2025-10-29,Kazik,Amerykański,Standard,Ostry,Kurczak,4d1826e0-5d8d-4f43-afda-a20cfde0244d
+2025-10-24,Kazik,Standard,Standard,Ostry,Kurczak,4e5ee494-a241-45d3-b796-8fe1c1b80c73
+2025-09-24,Roman,Tortilla,Standard,Mieszany,Kurczak,4f49ecdb-dca6-495e-aa61-c15db4db9a09
+2025-11-18,Michal,Amerykanski,Standard,Łagodny,Kurczak,4f68cd93-8926-4572-9217-225c140046fd
+2025-11-14,Milosz,Tortilla,Standard,Mieszany,Wolowina,4f7827e1-cc97-4184-825a-75542de85e95
+2026-01-07,Michal,pita Amerykanska,standard,Łagodny,Kurczak,4ff9ce5e-de82-498f-a3be-5b75102d6581
+2025-08-22,Kamil,Tortilla,Standard,Mieszany,Kurczak,505fcd89-b50b-4294-9b62-9e7314e9c457
+2025-11-21,Andrzej,Amerykanski,Standard,Mieszany,Wolowina,50663627-fad9-4807-9477-8059486452eb
+2026-01-26,Kazik,Amerykański,Standard,Ostry,Kurczak,512fc456-a184-4ccc-85ad-a92b35c712b8
+2025-11-18,Adas,amerykanski,Standard,Mieszany ,Wolowina,513cc1f0-720e-4005-9c5a-051805833a86
+2025-08-22,Kazik,Amerykanski,XL,Ostry,Kurczak,524f0086-694a-49c6-8855-437f0970506a
+2025-10-31,Andrzej K,Tortilla,XL,Mieszany,Kurczak,5318b21c-dcdb-4d9a-a4e8-d0a428d930d4
+2025-08-04,Kazik,Amerykanski,Standard,Ostry,Kurczak,535d5ba2-6207-4c47-8de7-0afd11819a27
+2025-07-25,Mati P,Amerykanski,Standard,Mieszany,Wolowina,538d6c50-bc9c-4c64-bac2-77d8e9c51566
+2025-08-22,Artur,Pita,Standard,Mieszany,Wolowina,552361ba-d526-4fae-bfa6-6d28426f6fbb
+2025-10-03,Adas,Amerykański ,Standard,MIeszany ,kurczak ,580a2f78-092b-4e36-9528-33d07b632ed5
+2025-11-13,Dawid,Tortilla,Standard,Mieszany,wołowina,590053f0-224a-4a17-9f52-02baa38b4076
+2025-11-26,Adas,amerykanski,Standard,Mieszany ,Wolowina,59c6bfc8-3e2b-4332-abb3-e330f55777d4
+2025-09-26,Kazik,Amerykański,Standard,Ostry,Kurczak ,5a3a72b1-86dc-47a3-a2d4-34b03d682eca
+2025-12-10,Mati P,Tortilla ,Standard,Ostry,Kurczak,5bfc213c-b3b9-4bf5-83b5-0cf90d93e4c1
+2026-01-15,Szymon,Tortilla,Standard,Mieszany,Kurczak,5cd13d1f-c64d-4ec9-888b-d1fa911fd003
+2025-08-14,Andrzej,Tortilla,Xl,Mieszany,Wolowina,5e65a2d3-4da3-4de2-bd7c-7c2b0c8fc355
+2025-11-21,Roman,Amerykanski,Standard,Mieszany,Wołowina,5ee61411-c0f2-4a06-96d6-9ce14fdc5a13
+2025-10-29,Mati P,Tortilla,Standard,Mieszany,Kurczak,60372afd-b271-443f-9061-674f083e94a6
+2025-08-08,Szymon,Amerykanski,Standard,OStry,Kurczak,60ab5593-3ffd-47b0-b2ad-7ea9225ed0cd
+2025-07-11,Kazik,Amerykanski,XXL,Ostry,Kurczak,60c61eba-0c7d-479f-b859-aedde6599627
+2025-08-04,Mati P,Amerykanski,Standard,Ostry,Kurczak,6558654d-a485-4e69-9a6a-ece80820bdbd
+2025-09-05,Michal,box bez surowek,maly,Lagodny,kurczak,669b8945-c19e-42d1-9194-eb26f448cd08
+2025-11-28,Kamil,Tortilla,Standard,Mieszany,Kurczak,6800aad9-56fc-40b3-9e03-f5d14f73c44a
+2026-01-23,Szymon,Tortilla,Standard,Mieszany,Kurczak,6818e50c-0ca5-47fc-95c1-4fdeccad2d4d
+2025-10-10,Dawid,Amerykanski,Standard,Mieszany,wolowina,6861b43c-a09c-4325-a612-ecf7197fb6e0
+2026-01-09,Kazik,Amerykański,XL,Ostry,Kurczak ,6926742f-88e0-4355-9025-a824428c5e32
+2025-10-31,Rafał,Tortilla,XL,mieszany,Wołowina,69c7396a-36cb-4136-9a27-5b301ee76fd3
+2025-09-12,Abdul,Pita,Standard,Mieszany,Kurczak,6af3e906-2a74-472f-b1e6-03e372d7a356
+2026-01-30,Andrzej,Tortilla,Standard,Mieszany,Wolowina,6afae9af-f2b3-4f36-9da3-8b122fdb3923
+2025-07-11,Kamil,Tortilla,Standard,Mieszany,Kurczak,6b467452-3dea-4d33-bbd8-7a4f6e099c4b
+2025-11-05,Artur,Pita,Standard,Mieszany,Wołowina,6ba4328f-834f-40d6-b2bd-371dd0068ba6
+2025-08-29,Mati P,Amerykanski,XXL,OStry,Kurczak,6bd7543d-00d5-4af6-8ad6-8819d15dc70b
+2026-01-13,Michal,pite Amerykanski,standard,Łagodny,Kurczak,6c91d1d9-0dc5-4de2-b3a4-2ebd7dba3621
+2025-09-25,Kazik,Tortilla,Standard,Ostry,Kurczak,6cd499a0-0c6e-4b27-b128-d175e93cc94f
+2025-10-31,Ola,Amerykanski,standard,mieszany,kurczak,6dc48db6-e562-4b96-86b9-93159bd425c8
+2025-11-26,Andrzej,Tortilla,Standard,Mieszany,Wolowina,6fbd5a4b-9421-4578-a321-adaf4b90c537
+2025-07-30,Kazik,Amerykanski,Standard,Ostry,Kurczak,7054341d-f5cb-47f3-ad4c-b62f05eb3154
+2025-10-31,Roman,Amerykanski,Standard,Mieszany,Wołowina,705624f0-0bdd-4a91-b209-41c4d977cf21
+2025-08-22,Adas,Amerykanski,Standard,Mieszany,Kurczak,709ca865-b6db-4b3d-9ae6-0e776b0f0504
+2025-11-05,Łukasz,Tortilla,Standard,Mieszany,Wołowina,70cb713b-ae6b-4413-93ea-5c1d1963a30d
+2025-08-14,Mati P,samo menso,standard,ostry,kurczak,70f8d0c3-6cc0-4649-8b41-ba243e60bac3
+2026-02-06,Andrzej,Tortilla,Amerykanski,Mieszany,Wolowina,717809d5-0021-4e69-b2c7-38674580cacb
+2025-12-09,Szymon,Tortilla,Standard,Mieszany,Kurczak,71b295e9-722f-45f4-877c-10ce6f5c8669
+2025-11-05,Adas,BOX,Standard (bez surówke),Mieszany ,Mieszane,72345fe9-105e-4582-8837-43179d8538df
+2026-01-15,Andrzej,Amerykanski,Standard,Mieszany,Wolowina,72429eb9-d76d-4b34-89f1-32cc9d6e6f5a
+2025-11-13,Kazik,Amerykański,Standard,Ostry,Kurczak,728b6254-7ca2-4f28-836f-039e2d26ead3
+2025-10-10,Michal,Amerykanski,Standard,Łagodny,Kurczak,72f59d61-3d9a-40b8-8515-782f1f260e19
+2025-09-05,Milosz,Tortilla,Standard,Mieszany,Wolowina,73bc28bf-a19c-4de0-98a5-b0c46cfde67d
+2026-01-13,Mateusz,Amerykanski,Standard,Mieszany,Wołowina,73c6b898-bdb0-493d-831a-baacd240c953
+2025-11-14,Roman,Amerykanski,XL,Mieszany,Wolowina,75940a2b-a416-48a0-8df4-92cfa5c6fb70
+2025-09-19,Michal,Amerykanski,Standard,Lagodny,Kurczak,7601779b-6bc5-4149-aef8-f7e315249e8d
+2025-08-08,Mati P,Amerykanski,XL,Ostry,Kurczak,776b55c8-f13d-438d-a619-1f326532808f
+2025-10-31,Andrzej,Amerykanski,Standard,Mieszany,Wolowina,78150ceb-2b4c-4f27-9467-5ef07355524d
+2025-11-25,Szymon,Tortilla,Standard,Mieszany,Kurczak,78cdfdc0-779e-487e-a297-55db00b95cb4
+2025-11-07,Adas,amerykanski,Standard,Mieszany ,Wolowina,7cf58faf-c956-497c-8e87-6d54ee09436d
+2025-11-04,Andrzej,Amerykanski,Standard,Mieszany,Wolowina,7df32229-1347-441c-b627-415083a297a6
+2025-12-02,Kazik,Amerykański ,Standard ,Ostry,Kurczak,7ec3b2fe-43fc-41ba-9bac-65f5cd256151
+2025-09-12,Artur,Pita,Standard,Mieszany,Wolowina,7ec7cd59-f7b6-4bd7-9a18-a29ecc647e43
+2025-10-24,Andrzej,Amerykanski,Standard,Mieszany,Wolowina,7f67b9f7-19b5-465c-9760-dc2a2fc3381b
+2025-10-15,Kazik,Standard,Standard,Ostry,Kuciak,7fab6825-7c26-4b9f-aa6e-e2bc889c9ab2
+2025-08-04,Kamil,Tortilla,Standard,Mieszany,Kurczak,80043806-f51c-4c62-a8be-47ac2b4cfe9f
+2025-09-26,Abdul,Tortilla,standard,mieszany,Kurczak,80b612a3-fd42-4e62-b44f-916a685bf9b7
+2025-12-02,Mati P,Tortilla,Standard,Ostry,Kurczak,814410fd-70b8-44c5-bc7a-2c183f4bbae8
+2025-11-04,Artur,pita amerykański,standard,ostry,wolowina,824dd35b-8236-41d7-ab1c-6cc546e902df
+2025-09-26,Andrzej,Amerykanski,Standard,Mieszany,Wolowina,8303f755-a03f-493b-816f-6cdd8ef95b03
+2025-11-05,Abdul,amerykanski,Standard,Mieszany,Kurczak,8331f7e0-9ba2-4248-813c-6013b797e087
+2025-11-28,Michal,pita Amerykanska,standard,Łagodny,Kurczak,83db7ab7-3972-4a21-b3cc-640c4521585d
+2025-11-13,Mati P,Tortilla ,Standard,Ostry,Kurczak,845830bb-6543-45b9-afc6-f18a504d74e5
+2025-09-26,Szymon,Amerykański,Standard,Mieszany,Kurczak,84adb4ac-b9b3-4987-a69d-25d1c459c735
+2025-12-05,Andrzej,Amerykanski,XL,Mieszany,Wolowina,84fdac7e-e841-4764-ba9e-00e3fe687f15
+2026-01-09,Adas,amerykanski,Standard,Mieszany ,kurczak,858ab42c-a672-4b2b-a122-cebbc2c458cb
+2025-11-19,Artur,Pita (amerykański),Standard,Mieszany,Wołowina,859c0812-57c1-41b4-93d8-b314d9aac5b3
+2025-10-31,Michal,Amerykanski,Standard,Łagodny,Kurczak,85cd5e34-b998-4627-b87d-7677992d9046
+2025-08-22,Mati P,Samo menso,Standard,Ostry,Kurczak,85da9a2c-e9ec-4f40-92ac-f043c81dddce
+2025-12-09,Roman,Amerykanski,Standard,Mieszany,Wołowina,864c1320-491d-481a-8a51-de82829f666b
+2025-10-31,Abdul,Amerykanski,Standard,Mieszany,Kuciak,87446de2-cc08-4647-a765-db13cb31d262
+2025-10-15,Roman,Amerykanski,Standard,Mieszany,Wołowina,87569fae-6acb-4cc0-86b0-cfa9de6bad1f
+2026-02-06,Szymon,Tortilla,Standard,Mieszany,Kurczak,876e735a-65c1-49c8-a036-5e590e8bcf0c
+2025-10-24,Roman,Amerykanski,XL,Mieszany,Wołowina,8773cfd2-201e-4add-af0f-b357503a3c21
+2025-07-30,Andrzej,Tortilla,Standard,Mieszany,WOlowina,87e504d3-8b71-4374-8f7d-74b987b36fe0
+2025-11-24,Pawel,Amerykanski,Standard,Mieszany,Wołowina,887e9f12-0f0e-4e4d-9916-f7319f431a5a
+2025-08-22,Mateusz,Amerykanski,XL,Mieszany,Wolowina,8ac74f12-fa58-4be9-aed3-3990b60a4a6c
+2025-08-22,Andrzej,Amerykanski,Standard,Mieszany,Kurczak,8b38bb1e-b67f-4db5-9df5-a4db924bcefd
+2025-09-19,Andrzej,Amerykanski,Standard,Mieszany,Kurczak,8d318cfc-efb0-4595-b776-e8c3e3602ff0
+2025-11-04,Dawid,Tortilla,Standard,Mieszany,wołowina,8dc4b56f-7a19-4f28-a06d-c24d33b4a756
+2025-08-29,Adas,Amerykanski,XL,Mieszany,Kurczak,8dd0c905-3d2c-4f20-872b-014aefa54b20
+2025-09-17,Roman,Tortilla,Standard,Mieszany,Wolowina,8eb22557-84c5-4fca-aabc-a066e57ab69e
+2025-09-25,Dawid,Tortilla,Amerykanski,Mieszanyw,Wolowina,8efe9538-4202-40bc-959e-0de262b0765a
+2025-12-12,Andrzej,Tortilla,Standard,Mieszany,Wolowina,9022c098-a58e-464f-b379-3c39f2a1fa07
+2025-10-31,Szymon,Tortilla,Standard,Mieszany,Kurczak,9187c612-dc65-4d58-b462-54e10a2bd4b6
+2025-08-04,Roman,Tortilla,Standard,Mieszany,Wolowina,91d3262b-0a5a-4ef8-8b6e-c8b53d77ada2
+2025-08-22,Dawid,Amerykanski,Standard,Mieszany,Wolowina,92534f58-a326-4560-b7c6-55174a9e4839
+2026-01-26,Szymon,Tortilla,Standard,Mieszany,Kurczak,95288b2e-a0fa-457d-9d44-de418d19d580
+2025-10-15,Kamil,Tortilla,Standard,Mieszany,Kurczak,95c31d71-e981-470b-9877-a4ae8793d70c
+2025-09-19,Kazik,Amerykanski,XL,Ostry,Kurczak,96394a1c-802a-4507-8d7e-492eee30b0dc
+2025-12-12,Szymon,Tortilla,Standard,Mieszany,Kurczak,967ead00-c095-41da-a685-e4c05af5c3e1
+2025-12-09,Kazik,Amerykański,Standard,Ostry,Kurczak,96987883-d0fc-4923-8494-5ffb0aaa9396
+2026-01-09,Roman,Standard,XL,Mieszany,Wolowina,9854eda4-0a86-431a-b07a-0d0f20653109
+2025-11-04,Adas,amerykanski,Standard,Mieszany ,kurczak,98d53fbf-18e9-4570-b556-510fec28f5b6
+2025-07-11,Adas,Amerykanski,XL,Mieszany,Wolowina,98e79c71-d377-48b8-9c5d-8c0f0abe9456
+2025-11-28,Dawid,Tortilla,Standard,Mieszany,wolowina,99b51248-c87f-43f7-a2b4-e58f586f1304
+2025-10-10,Kamil,Tortilla,Standard,Mieszany,Kurczak,9a51e1f9-9ffb-463c-a2da-17ff2e45050e
+2025-09-05,Ola,Pita,Standard,Mieszany,Kurczak,9cd1faa7-7c64-49e6-b7c0-4f5da6f65c57
+2025-11-25,Kazik,Amerykański,Standard,Ostry,Kurczak,9cef0563-bf92-464d-9b2d-b3416b90d0ae
+2025-11-14,Andrzej,Amerykanski,Standard,Mieszany,Wolowina,9e7b411b-c7eb-4802-857d-f1dc0e1ea05c
+2026-01-16,Mati P,Pita,Standard,Ostry,Kurczak,9f04ec35-c4a4-48c1-a57c-e1061076e065
+2025-09-12,Roman,Tortilla,XL,Mieszany,Wolowina,a07671bc-ba45-4428-a6c6-81ac87a1fac6
+2025-08-14,Roman,Amerykanski,XL,Mieszany,Wolowina,a1ac8e25-d5be-4647-aa91-7373c6b40d00
+2026-01-26,Adas,amerykanski,pita,Mieszany ,kurczak,a441a75c-a07c-482f-85d7-5cddaf1a0300
+2025-12-17,Mati P,Tortilla,Standard,ostry,Kurczak,a4d56c65-0ac8-409e-ad73-0a0804ae4e29
+2025-11-24,Madam,Tortilla ,Standard,Ostry,Kurczak,a4e0b54f-8d48-4db2-8d21-f8337b5c8dd7
+2025-08-14,Rafal,Bula,XL,Mieszany,Wolowina,a56d1db7-c015-40c0-9a5b-266ac26db27d
+2025-10-03,Mati P,Tortilla ,Standard,Ostry,Kurczak,a74dab29-276d-4adf-9aec-8e7c3a397d4e
+2025-11-07,Roman,Amerykanski,XL,Mieszany,Wolowina,a7d90096-afe5-47cf-9616-90e38cf0d4e6
+2026-01-13,Konrad,Tortilla,Standard,Mieszany,Wołowina,a8e4280f-aa6a-4580-8af1-77b0a16ea5e1
+2025-10-31,Kamil,Tortilla,Standard,Mieszany,Kurczak,a90d7b7a-dc6e-4e45-83cc-bc999d5c341f
+2025-09-26,Kamil,Tortilla,Standard,Mieszany,Kurczak,aa224bf7-b9a5-448b-9c40-870716cb02cf
+2026-01-09,Michal,Amerykanski,standard,Łagodny,Kurczak,ab2e627b-dbba-4358-8d76-d2b8da651c14
+2025-10-17,Michamil,Tortilla,Standard,Mieszany,Kurczak,abce1e33-ee4e-434a-b527-edb5517eb8ef
+2025-09-05,Kazik,Amerykanski,Standard,Ostry,Kurczak,ad2c2301-7119-485f-bfeb-398a54b33075
+2025-11-04,Mateusz,Amerykanski,Standard,Mieszany,Wolowina,adc3b30c-1e8e-42ea-80c2-fd3df565b12b
+2026-01-13,Adas,amerykanski,Standard,Mieszany ,kurczak,ae9c69ca-6110-434f-9bc1-90d8d1840353
+2025-08-14,Alicja,Tortilla,Standard,Mieszany,Wolowina,aef3e293-976b-43b9-8259-d27fcf6a043f
+2025-10-17,Milosz,Tortilla,Standard,Mieszany,Wolowina,b2912bab-2561-4448-bfc5-35b305eee906
+2025-08-04,Dawid,Tortilla,Standard,Mieszany,Wolowina,b2f769e5-0b1c-4d6a-a5c3-57cb9d3124f2
+2026-01-30,Szymin,Tortilla,Standard ,Mieszany,Kurczak,b44015ed-44c9-4c14-aa9b-62a5b83f7b97
+2025-11-03,Kamil,Tortilla,Standard,Mieszany,Kurczak,b4c0228a-60b5-4cf2-98a1-07622a58bc32
+2025-11-07,Kamil,Tortilla,Standard,Mieszany,Kurczak,b53d7c4f-33b4-48a6-8e32-a6e65c7b31a4
+2025-10-17,Adas,Amerykanski ,XL,MIeszany ,kurczak ,b5e23c02-d93f-4410-b887-0dd54eba12fe
+2025-08-04,Michal,Amerykanski,Standard,Lagodny,Kurczak,b635c7d5-b8b4-443e-a97a-7b2806bf0a05
+2025-08-04,Adas,Amerykanski,Standard,Mieszany,Wolowina,b6a1c8bf-704e-4c02-934d-23dc21dc7ed8
+2025-08-22,Roman,Amerykanski,Standard,Mieszany,Wolowina,b6b655d3-61d6-4ead-a540-3f93d90f0267
+2025-10-10,Adas,Amerykański ,XL,MIeszany ,kurczak ,b92c5e86-6826-451e-96a8-b0d69e7d8850
+2025-10-23,Mati P,Tortilla ,Standard,Ostry,Kurczak,b9b3648a-a23d-4a2b-b16b-01b7a3990d51
+2026-01-23,Roman,Amerykanski,Standard,Mieszany,Wołowina,b9f18a68-fc8e-43fd-97ce-395b656d376f
+2025-10-24,Milosz,Tortilla,Standard,Mieszany,Wolowina,baec8581-0d76-4506-86b9-94a225981479
+2025-11-18,Roman,Tortilla,Standard,Mieszany,Wołowina,bb744dd3-b9f7-41b7-af96-7d256c1d48c4
+2025-12-12,Adas,Pita amerykanski,Standard,mieszany,Kurczak,bd1faf7d-3631-46aa-a7de-9acdb6711f56
+2026-01-23,Adas,amerykanski,pita,Mieszany ,kurczak,befa20d9-7d48-478e-8e59-f9307b259a02
+2025-09-26,Roman,Amerykanski,XL,Mieszany,Wołowina,bf3883bf-384a-4bc7-b52c-2382f2ffc76d
+2025-11-13,kamtur,Tortilla,Standard,Mieszany,mieszane,bfb730ed-0069-4a12-b1de-1099356ffd19
+2025-11-04,Roman,Amerykanski,Standard,Mieszany,Wołowina,c12f8509-534d-4857-8873-33ae84f00786
+2025-10-29,Adas,Standard,amerykanski,Mieszany ,Wolowina,c18ff246-66b9-4ed7-8fad-2b0fa1998bf8
+2025-11-21,Kamil,Tortilla,Standard,Mieszany kutasem,Kurczak,c1afc4eb-bb14-4b10-91af-3f0c9bafe130
+2026-01-09,Andrzej,Amerykanski,XL,Mieszany,Wolowina,c1c054ef-72fa-4c29-ac59-bf42e0089abd
+2025-08-22,Milosz,Tortilla,Standard,Mieszany,Wolowina,c26d581b-d15e-4636-99f9-dc491db22050
+2026-01-13,Roman,Tortilla,Standard,Mieszany,Wolowina,c2d7e1ba-4328-4694-aa09-d98424962e6d
+2025-11-03,Kazik,Tortilla,Standard,Ostry,Kurczak,c3822842-b535-4814-b9a9-74cdb50a574a
+2025-12-17,Roman,Tortilla,Standard,Mieszany,Wołowina,c47f8ae0-8bc9-4140-a32f-87d4dcd32134
+2025-10-10,Kazik,Amerykański,XL,Ostry,Kurczak,c5000c54-1b53-41e3-8950-591df73c22ef
+2026-01-23,Abdul,Tortilla,standard,mieszany,Kurczak,c5d632c8-ed9b-4d4c-8daa-d63b9b6eff8b
+2025-09-05,Mati P,Tortilla,Standard,Mieszany,Kurczak,c61bf92b-4dca-4191-9f0c-0941ad4816f2
+2026-01-26,Andrzej,Tortilla,Standard,Mieszany,Wolowina,c6254038-f7af-47af-8f18-ddd5b0aafcb0
+2026-01-09,Mati P,Tortilla ,Standard,Ostry,Kurczak,c6fc5911-1661-4142-a07b-e101631272fc
+2025-11-28,Szymon,Tortilla,Standard,Mieszany,Kurczak,ca500acb-9f17-47d4-9caf-ffe4429f679b
+2025-10-31,Adas,amerykanski,XL,Mieszany ,Wolowina,ca65451a-e544-4d65-ad03-24cdedf8841d
+2025-09-26,Kazik,Tortilla,Standard,Ostry,Kurczak ,ca881172-6ef5-4a84-9af7-f440bc7fe89a
+2025-10-31,Kazik,Amerykański,XL,Ostry,Kurczak,cbd97e08-1ec2-441a-b80d-05e564f4465b
+2025-11-21,Kazik,Amerykanski,Standard,Ostry,Kurczak,cc240696-98c6-4f60-9849-80465f500715
+2026-01-23,Michal,Amerykanski,standard,Łagodny,Kurczak,cc3e5535-a1f4-4d16-80f9-79c80f75bf33
+2025-08-29,Andrzej,Tortilla,XXL,Mieszany,Wolowina,ce66f407-efb3-4ff2-9c1b-8455c9ae59a9
+2025-10-31,Emma,Bułka,Standard,Mieszany,Kuciak,cec8fd1b-93c9-493f-b694-0e54b5ed00e8
+2025-12-05,Roman,Amerykanski,XL,Mieszany,Wołowina,cf4a9616-02e1-4180-991a-3321385b0bcd
+2026-01-23,Mati P,Tortilla ,Standard,Ostry,Kurczak,cfcfc633-3dd2-4317-8859-270a4fabe4a7
+2025-09-25,Rafal,Bulka,Standard,Mieszany,Wolowina,d07e1c15-cf46-4f8a-bd6c-d9507ee1ec57
+2025-11-28,Roman,Amerykanski,Standard,Mieszany,Wolowina,d2d79300-af49-49e2-8e76-7448c875145a
+2025-12-17,Adas,amerykanski,Standard,Mieszany ,Wolowina,d3ffa11e-b436-4d70-986c-42757a767ab0
+2025-11-26,Kazik,Tortilla,Standard,Ostry,Kurczak,d52f920b-660e-468c-b4d7-c818e4e3c2aa
+2025-11-05,Mati P,BOX,Standard (bez surówke),Mieszany,Mieszane,d5e54e02-64db-4a93-8970-24156cf87c15
+2025-12-12,Michal,pita Amerykanska,standard,Łagodny,Kurczak,d6bdf9e7-76f8-4035-ba08-34c8f8402615
+2026-02-06,Kazik,Tortilla,XL,Ostry,Kurczak,d804bdbf-2074-45ee-9572-bbbd4ba431da
+2025-11-07,Kazik,Tortilla,XL,Ostry,Kurczak ,d8468e6e-0f3d-4ecd-9a93-6c7933ebd15d
+2025-08-29,Kamil,Tortilla,Standard,Mieszany,Kurczak,d85ad03d-48d1-42ec-b8b5-6966ac6ac60a
+2025-12-10,Adas,amerykanski,Standard,Mieszany ,Wolowina,d97feefc-6373-40d1-8d20-c141b7a62ba4
+2025-10-17,Szymon,Amerykański,Standard,Mieszany,Kurczak,db36fbbe-feee-43b8-a15c-f438fc3684a8
+2025-11-04,Michamil,Amerykanski,Standard,Mieszany,Kurczak,db5e99f6-4359-46fd-936c-4e9d292a2bab
+2025-11-03,Lukasz,Amerykanski,Standard,Mieszany,Wołowina,dc81b5c3-cdb3-4729-b1f1-e6b5933e1a36
+2026-01-09,Szymon,Tortilla,Standard,Mieszany,Kurczak,dce2197a-a1c2-40dc-a02d-1c40a774675d
+2025-09-05,Mateusz,Amerykanski,Standard,Mieszany,Wolowina,de89ae55-1584-463f-a4a1-1856dfe25820
+2025-07-11,Roman,Amerykanski,XL,Mieszany,Wolowina,dea2467e-25b6-406b-bb10-52031912a2b5
+2025-08-29,Kazik,Amerykanski,XXL,Ostry,Kurczak,e136d101-4629-4995-8053-61bd2c10e2f4
+2025-12-10,Kamil,Tortilla,Standard,Mieszany,Kurczak,e191ab04-0543-4c41-a41c-7fecb448397f
+2025-08-08,Adas,Amerykanski,Standard,MIeszany,Wolowina,e364eeba-5216-4291-9cc9-9508b8c2bcb5
+2025-07-25,Roman,Tortilla,Standard,Mieszany,Wolowina,e4012b2f-38f1-4558-900d-f16015919a0e
+2026-01-15,Dawid,Tortilla,Standard,Mieszany,wolowina,e40da487-9d63-4fea-b3b6-88e939db185b
+2026-01-07,Roman,Amerykanski,Standard,Mieszany,Wolowina,e510a28b-fe0b-468c-a1b3-46f677c4531e
+2025-11-05,Kamil,Tortilla,Standard,Mieszany,Kurczak,e546d6c4-9370-4b4d-8cb4-e7af0db7c348
+2025-07-25,Abdul,Tortilla,Standard,Mieszany,Kurczak,e61b5372-3478-4409-a8ff-fb4865abda7b
+2025-10-23,Adas,Amerykanski ,Standard,Mieszany ,kurczak ,e62636f5-fb57-4d3e-bcfb-107f6691c5f8
+2025-11-07,Andrzej,Amerykanski,Standard,Mieszany,Kurczak,e734ee4e-e7b4-40cb-a68d-764fc9e9a866
+2025-10-17,Kazik,Standard,XL,Ostry,Kurczak,e760ea52-317a-4ef8-a61b-8d49cbef8ec7
+2025-12-17,Szymon,Tortilla,Standard,Mieszany,Kurczak,e7c2e8c4-a68e-46c5-9647-3ab8cf27c3e2
+2025-12-09,Andrzej,Tortilla,Amerykanski,Mieszany,Wolowina,e8b60068-6b16-43a5-be48-8bf4c72218fd
+2026-01-30,Mati P,Tortilla ,Standard,Ostry,Kurczak,e9f11515-86f6-4e0e-884e-39dbec43e060
+2025-08-22,Abdul,Tortilla,Standard,Mieszany,Wolowina,ea1417f5-dafc-4b85-9a4b-55a612caeb0b
+2026-02-06,Milosz,Tortilla,Standard,Mieszany,Wolowina,eaa4f188-cabe-4d94-846d-3a9211e5cd04
+2025-07-30,Roman,Trotilla,Standard,Mieszany,Wolowina,ebd27daf-c019-4433-a492-45ee1ca531ed
+2025-09-05,Dawid,Tortilla,Standard,Mieszany,Wolowina,ec0b3254-8e85-478c-babc-6debb499c74e
+2025-08-08,Kamil,Tortlla,Standard,Mieszany,Kurczak,ec348b62-79fb-41da-b6cd-2b45e56ebf81
+2025-08-08,Kazik,Amerykanski,XL,OStry,Kurczak,ec3abc31-c26f-48ff-b2ac-bc8d852ffba6
+2025-08-29,Roman,Tortilla,XXL,Mieszany,Wolowina,ecbc62d8-7fcf-4a5c-9f0f-b7fe7eb32b0e
+2026-01-27,Lukasz,Amerykański,Standard,Ostry,Wołowina ,ece6b3d6-56d9-4085-8d68-ed58d0dcf919
+2025-10-31,Filip,Tortilla,Standard,Mieszany,Wolowina preferencyjnie nie z psa,ed7770a6-1d5d-4482-a1c1-3fef4acd6ff5
+2025-12-02,Adas,Amerykanski,Standard,Mieszany,Wołowina ,ee4c8c86-49d5-4393-abbf-d6c42b57222a
+2025-11-21,Adas,amerykanski,Standard,Mieszany ,Wolowina,eece6a46-be7d-45bc-8bc7-bfc8918971fd
+2026-01-16,Adas,amerykanski,pita,Mieszany ,Wolowina,efe85cbe-738e-48f9-8a48-b29c713a0304
+2025-12-17,Kazik,Amerykańśki,XL,Osrty,Kurczak,f0ae0058-3f97-4769-9555-0a5579489c19
+2025-10-15,Mati P,Standard,Standard,ostry,kurczak ,f186a708-dfad-41e7-a48f-2d8ebd585e4d
+2025-11-14,Kamil,Tortilla,Standard,Mieszany,Kurczak,f334bb9b-f2f4-4c09-9050-77853345b32b
+2025-12-02,Kazik,Tortilla,Standard,Ostry ,Kurczak ,f43025cc-e577-4921-ba3e-8478a9e85021
+2026-01-07,Andrzej,Amerykanski,Standard,Mieszany,Wolowina,f6c32593-fdee-484a-bc0f-a158f5908107
+2025-11-18,Kazik,Amerykański,Standard,Ostry,Kurczak,f758f52c-0b1a-4a84-aefa-ed85a2fe4b46
+2025-10-31,Milosz,Tortilla,Standard,Ostry,Kurczak,f7e650bc-c7bc-4ec8-b4ce-ce9a51570423
+2026-01-26,Roman,Tortilla,Standard,Mieszany,Wolowina,f965f433-5477-4598-88d8-b146bbe03e6b
+2025-11-21,Szymon,Tortilla,Standard,Mieszany,Kurczak,f9ab40c0-fc79-4679-a221-fb7baeb06691
+2025-09-17,Dawid,Amerykanski,Standrd,Mieszany,Wolowina,fb2e5436-e59a-4751-ad5d-9eca997b6d72
+2025-08-08,Roman,Tortilla,XL,Mieszany,wolowina,fc2d333f-4785-4caa-84c9-724e5ff669de
+2025-10-29,Artur,Pita,Standard,Ostry,Wolowina,ffbce754-7363-466b-914b-f74e67240fe4

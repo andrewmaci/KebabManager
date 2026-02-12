@@ -30,3 +30,6 @@ dist-ssr
 
 # Firestore emulator data (if not using named volumes)
 .firestore/
+
+# Local Docker Compose override (contains emulator config for local development only)
+docker-compose.override.yml

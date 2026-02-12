@@ -574,6 +574,13 @@ For fully local development without cloud dependencies:
 
 **Prerequisites:**
 - Docker and Docker Compose installed
+- `orders_export.csv` file present in project root (for seeding)
+
+**How It Works:**
+- `docker-compose.yml` - Production configuration (no emulator)
+- `docker-compose.override.yml` - Local emulator config (**git-ignored**, never committed)
+
+Docker Compose automatically merges `docker-compose.override.yml` with the main config.
 
 **Start the development environment:**
 ```bash
@@ -585,6 +592,17 @@ This starts three services:
 2. **Emulator UI** (port 4000) - Web interface to view/edit data
 3. **Kebab App** (port 8000) - Full application stack
 
+**Seed Database with CSV Data:**
+To import `orders_export.csv` into the emulator (runs once per fresh start):
+```bash
+docker-compose --profile seed up seed-data
+```
+
+Or combine both commands:
+```bash
+docker-compose up -d && docker-compose --profile seed up seed-data
+```
+
 **Access points:**
 - Application: http://localhost:8000
 - Emulator UI: http://localhost:4000
@@ -595,9 +613,11 @@ This starts three services:
 - Data survives container restarts
 - To reset data: `docker-compose down -v`
 
-**Environment Variables:**
-The emulator is activated automatically via `FIRESTORE_EMULATOR_HOST` env var.
-When this variable is NOT set (production), the app uses real Firestore.
+**Production Safety:**
+- `docker-compose.override.yml` is git-ignored and never pushed to main
+- Production deployments use only `docker-compose.yml` (no emulator)
+- The emulator is activated automatically via `FIRESTORE_EMULATOR_HOST` env var
+- When this variable is NOT set (production), the app uses real Firestore
 
 ---
 

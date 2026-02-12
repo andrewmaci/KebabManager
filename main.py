@@ -16,6 +16,8 @@ from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+
+
 # --- Models ---
 class KebabOrderData(BaseModel):
     customerName: str
@@ -25,15 +27,23 @@ class KebabOrderData(BaseModel):
     meatType: str
     date: str | None = None
 
+
 class KebabOrder(KebabOrderData):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
 
+
 # --- Firestore Client ---
 # Initialize Firestore client
-# When FIRESTORE_EMULATOR_HOST is set, the client automatically connects to emulator
-project_id = os.environ.get('GOOGLE_CLOUD_PROJECT', 'kebab-local-dev')
-db = firestore.Client(project=project_id)
-orders_collection = db.collection('orders')
+# When FIRESTORE_EMULATOR_HOST is set, use emulator with explicit project
+# Otherwise, use default client which auto-detects credentials from cloud environment
+if os.environ.get("FIRESTORE_EMULATOR_HOST"):
+    # Local development with emulator
+    project_id = os.environ.get("GOOGLE_CLOUD_PROJECT", "kebab-local-dev")
+    db = firestore.Client(project=project_id)
+else:
+    # Production/cloud environment - auto-detect project and credentials
+    db = firestore.Client()
+orders_collection = db.collection("orders")
 
 # --- SSE Client Queues ---
 sse_client_queues: List[asyncio.Queue] = []
@@ -41,11 +51,13 @@ sse_client_queues: List[asyncio.Queue] = []
 # --- FastAPI app ---
 app = FastAPI()
 
+
 # --- Utility to send updates to clients ---
 async def send_update(event: str, data: dict):
     """Puts an event and data into each client's queue."""
     for queue in sse_client_queues:
         await queue.put({"event": event, "data": data})
+
 
 # --- SSE Stream Endpoint ---
 async def order_events_generator(request: Request):
@@ -57,12 +69,12 @@ async def order_events_generator(request: Request):
             # Check if client is still connected
             if await request.is_disconnected():
                 break
-            
+
             # Wait for an event to be put on the queue
             event_data = await queue.get()
             event = event_data["event"]
             data = event_data["data"]
-            
+
             # Yield the event in SSE format
             yield f"event: {event}\ndata: {json.dumps(data)}\n\n"
     except asyncio.CancelledError:
@@ -74,7 +86,10 @@ async def order_events_generator(request: Request):
 
 @app.get("/api/orders/stream")
 async def order_stream(request: Request):
-    return StreamingResponse(order_events_generator(request), media_type="text/event-stream")
+    return StreamingResponse(
+        order_events_generator(request), media_type="text/event-stream"
+    )
+
 
 # --- Standard API Routes ---
 @app.get("/api/orders", response_model=List[KebabOrder])
@@ -82,10 +97,11 @@ def get_orders(date: str | None = None):
     orders = []
     query = orders_collection
     if date:
-        query = query.where('date', '==', date)
+        query = query.where("date", "==", date)
     for doc in query.stream():
         orders.append(KebabOrder(**doc.to_dict()))
     return orders
+
 
 @app.post("/api/orders", response_model=KebabOrder)
 async def add_order(order_data: KebabOrderData):
@@ -95,10 +111,12 @@ async def add_order(order_data: KebabOrderData):
     await send_update("new_order", new_order.dict())
     return new_order
 
+
 # --- Static Files and App Serving ---
 
 # --- PDF Font Setup ---
 import pathlib
+
 FONT_PATH = str(pathlib.Path(__file__).parent / "static" / "assets" / "DejaVuSans.ttf")
 if os.path.exists(FONT_PATH):
     pdfmetrics.registerFont(TTFont("DejaVuSans", FONT_PATH))
@@ -106,45 +124,57 @@ if os.path.exists(FONT_PATH):
 else:
     FONT_NAME = "Helvetica"  # fallback
 
+
 @app.post("/api/orders/pdf")
 async def generate_orders_pdf(orders: list[KebabOrderData]):
     buffer = BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=A4, leftMargin=30, rightMargin=30, topMargin=30, bottomMargin=30)
+    doc = SimpleDocTemplate(
+        buffer,
+        pagesize=A4,
+        leftMargin=30,
+        rightMargin=30,
+        topMargin=30,
+        bottomMargin=30,
+    )
     styles = getSampleStyleSheet()
     # Use DejaVuSans for all text if available
-    styles['Title'].fontName = FONT_NAME
-    styles['Normal'].fontName = FONT_NAME
+    styles["Title"].fontName = FONT_NAME
+    styles["Normal"].fontName = FONT_NAME
     elements = []
 
     # Title
-    elements.append(Paragraph("Kebab Order Report", styles['Title']))
+    elements.append(Paragraph("Kebab Order Report", styles["Title"]))
     # Add date subtitle if available
-    if orders and hasattr(orders[0], 'date') and orders[0].date:
-        elements.append(Paragraph(f"Orders for: {orders[0].date}", styles['Normal']))
+    if orders and hasattr(orders[0], "date") and orders[0].date:
+        elements.append(Paragraph(f"Orders for: {orders[0].date}", styles["Normal"]))
     elements.append(Spacer(1, 12))
 
-
     # Table headers (matching jsPDF) - wrap in Paragraph for Unicode support
-    header_style = styles['Normal'].clone('TableHeader')
+    header_style = styles["Normal"].clone("TableHeader")
     header_style.fontName = FONT_NAME
     header_style.fontSize = 11
     header_style.alignment = 1  # center
-    cell_style = styles['Normal'].clone('TableCell')
+    cell_style = styles["Normal"].clone("TableCell")
     cell_style.fontName = FONT_NAME
     cell_style.fontSize = 11
     cell_style.alignment = 1  # center
 
     data = [
-        [Paragraph(text, header_style) for text in ["Imie", "Typ", "Rozmiar", "Sos", "Mieso"]]
+        [
+            Paragraph(text, header_style)
+            for text in ["Imie", "Typ", "Rozmiar", "Sos", "Mieso"]
+        ]
     ]
     for order in orders:
-        data.append([
-            Paragraph(str(order.customerName), cell_style),
-            Paragraph(str(order.kebabType), cell_style),
-            Paragraph(str(order.size), cell_style),
-            Paragraph(str(order.sauce), cell_style),
-            Paragraph(str(order.meatType), cell_style)
-        ])
+        data.append(
+            [
+                Paragraph(str(order.customerName), cell_style),
+                Paragraph(str(order.kebabType), cell_style),
+                Paragraph(str(order.size), cell_style),
+                Paragraph(str(order.sauce), cell_style),
+                Paragraph(str(order.meatType), cell_style),
+            ]
+        )
 
     # Calculate column widths to span the page width
     page_width = A4[0] - doc.leftMargin - doc.rightMargin
@@ -153,47 +183,62 @@ async def generate_orders_pdf(orders: list[KebabOrderData]):
     col_widths = [col_width] * col_count
 
     table = Table(data, repeatRows=1, colWidths=col_widths)
-    table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.Color(0.85, 0.47, 0.02)),  # amber-600
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
-        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-        ('FONTNAME', (0, 0), (-1, -1), FONT_NAME),
-        ('FONTSIZE', (0, 0), (-1, -1), 11),
-        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
-        ('TOPPADDING', (0, 0), (-1, 0), 8),
-        ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
-    ]))
+    table.setStyle(
+        TableStyle(
+            [
+                (
+                    "BACKGROUND",
+                    (0, 0),
+                    (-1, 0),
+                    colors.Color(0.85, 0.47, 0.02),
+                ),  # amber-600
+                ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+                ("FONTNAME", (0, 0), (-1, -1), FONT_NAME),
+                ("FONTSIZE", (0, 0), (-1, -1), 11),
+                ("BOTTOMPADDING", (0, 0), (-1, 0), 12),
+                ("TOPPADDING", (0, 0), (-1, 0), 8),
+                ("GRID", (0, 0), (-1, -1), 0.5, colors.grey),
+            ]
+        )
+    )
     elements.append(table)
 
     doc.build(elements)
     buffer.seek(0)
-    return StreamingResponse(buffer, media_type="application/pdf", headers={"Content-Disposition": "attachment; filename=orders.pdf"})
+    return StreamingResponse(
+        buffer,
+        media_type="application/pdf",
+        headers={"Content-Disposition": "attachment; filename=orders.pdf"},
+    )
+
 
 @app.patch("/api/orders/{order_id}", response_model=KebabOrder)
 async def edit_order(order_id: str, order_data: KebabOrderData):
     doc_ref = orders_collection.document(order_id)
     doc = doc_ref.get()
-    
+
     if not doc.exists:
         raise HTTPException(status_code=404, detail="Order not found")
-    
+
     # Get existing data to preserve fields not sent by client
     existing_data = doc.to_dict()
-    
+
     # Prepare update data, preserving date if not provided
     update_data = order_data.dict()
-    if update_data.get('date') is None:
-        update_data['date'] = existing_data.get('date')
-    
+    if update_data.get("date") is None:
+        update_data["date"] = existing_data.get("date")
+
     # Create updated order with preserved fields
     updated_order = KebabOrder(id=order_id, **update_data)
-    
+
     # Update the document (still using set for full replacement, but with preserved data)
     doc_ref.set(updated_order.dict())
-    
+
     # Notify all clients of the update
     await send_update("update_order", updated_order.dict())
     return updated_order
+
 
 @app.delete("/api/orders/{order_id}")
 async def delete_order(order_id: str):
@@ -201,15 +246,17 @@ async def delete_order(order_id: str):
     doc = doc_ref.get()
     if not doc.exists:
         raise HTTPException(status_code=404, detail="Order not found")
-    
+
     order_data = doc.to_dict()
     doc_ref.delete()
     # Notify all clients of the deletion
     await send_update("delete_order", {"id": order_id, "date": order_data.get("date")})
     return {"message": "Order deleted"}
 
+
 # --- Static Files and App Serving ---
 app.mount("/assets", StaticFiles(directory="static/assets"), name="assets")
+
 
 @app.get("/{full_path:path}")
 async def serve_react_app(full_path: str):

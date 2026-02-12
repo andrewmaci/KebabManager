@@ -144,12 +144,8 @@ const App: React.FC = () => {
       <NavigationBar isAdmin={isAdmin} onToggleAdmin={handleAdminToggle} />
       <main className="p-4 md:p-8 relative z-10">
         <header className="text-center mb-10 pt-8 md:pt-0">
-          <h1>
-            <img 
-              src="/logo.png" 
-              alt="Aureos Kebab" 
-              className="h-16 md:h-24 mx-auto drop-shadow-lg"
-            />
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-500 to-red-600 bg-clip-text text-transparent">
+            Aureos Kebab
           </h1>
           <p className="mt-2 text-lg text-slate-600 dark:text-slate-400">Twój bedas na zawołanie</p>
         </header>

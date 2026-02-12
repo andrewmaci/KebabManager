@@ -1,31 +1,9 @@
 services:
-  firestore-emulator:
-    image: google/cloud-sdk:emulators
-    command: >
-      gcloud emulators firestore start 
-      --host-port=0.0.0.0:8080
-      --project=kebab-local-dev
-    ports:
-      - "8080:8080"    # Firestore emulator API
-      - "4000:4000"    # Emulator UI
-    volumes:
-      - firestore-data:/data
-    environment:
-      - FIRESTORE_EMULATOR_PROJECT_ID=kebab-local-dev
-
   kebab-app:
     build: .
     image: kebab-order-app
     ports:
       - "8000:8000"
     environment:
-      - FIRESTORE_EMULATOR_HOST=firestore-emulator:8080
-      - GOOGLE_CLOUD_PROJECT=kebab-local-dev
       - PORT=8000
-    depends_on:
-      - firestore-emulator
     restart: unless-stopped
-
-volumes:
-  firestore-data:
-    driver: local

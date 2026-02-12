@@ -1,42 +1,88 @@
 # Kebab Koordynator
 
-An application to gather and organize kebab orders from a group of people. This version is containerized with Docker, packaging the frontend and backend together for easy deployment.
+An application to gather and organize kebab orders from a group of people. Real-time order list shared between all users with admin controls for editing and deleting.
 
 ## Features
-- **Shared Order List**: Real-time order list shared between all users.
-- **Simple Interface**: Easy-to-use form for adding new orders.
-- **Admin Mode**: A special mode that can be toggled on to allow editing and deleting of existing orders.
 
-## How to Run with Docker
+- **Real-time Order List**: All users see orders update instantly using Server-Sent Events
+- **Order Management**: Add orders with customer name, kebab type, size, sauce, and meat type
+- **Date Selection**: View and organize orders by date
+- **Admin Mode**: Password-protected mode to edit or delete existing orders
+- **Statistics Dashboard**: Leaderboard of top customers, total order counts, and time-series charts
+- **PDF Export**: Generate PDF reports of orders for the selected date
+- **JSON Import**: Import orders from JSON files (admin only)
+- **Dark Mode**: Toggle between light and dark themes
 
-Running the application is simple. With Docker installed, you only need to build the image and run the container.
+## Quick Start with Docker
 
 **Prerequisites:**
-- [Docker](https://www.docker.com/get-started) installed on your system.
+- [Docker](https://www.docker.com/get-started) and Docker Compose
 
-**Run the Application:**
+**Run with Docker Compose (recommended for local development):**
 
-1.  Open a terminal or command prompt in the project's root directory (where the `Dockerfile` is located).
+```bash
+docker-compose up
+```
 
-2.  **Build the Docker image** by running the following command. We'll tag it as `kebab-app`:
-    ```bash
-    docker build -t kebab-app .
-    ```
+This starts:
+- Application on http://localhost:8000
+- Firestore Emulator UI on http://localhost:4000
 
-3.  **Run the Docker container** from the image you just built:
-    ```bash
-    docker run -p 8000:8000 kebab-app
-    ```
-    - `-p 8000:8000` maps port 8000 on your local machine to port 8000 inside the container.
+**Or build and run manually:**
 
-4.  That's it! The application (both frontend and backend) is now running. Open your web browser and navigate to:
-    [http://localhost:8000](http://localhost:8000)
+```bash
+docker build -t kebab-app .
+docker run -p 8000:8000 kebab-app
+```
+
+Then open http://localhost:8000
+
+## Local Development
+
+**Prerequisites:**
+- Node.js 22+
+- Python 3.11+
+- Google Cloud credentials (for production Firestore)
+
+**Frontend:**
+```bash
+npm install
+npm run dev
+```
+
+**Backend:**
+```bash
+pip install -r requirements.txt
+python main.py
+```
+
+For local development with Firestore emulator, use Docker Compose as shown above.
 
 ## Using Admin Mode
 
-To edit or delete orders, you must enable Admin Mode.
-- Find the **"Tryb Admina"** toggle switch in the header at the top of the page.
-- Click the switch to turn it on.
-- You will be prompted for a password. The password is: `kebab`
-- If you enter the correct password, "Edit" and "Delete" buttons will now appear on each order item.
-- Your choice is saved, so you will remain in Admin Mode if you refresh the page.
+To edit or delete orders, enable Admin Mode:
+
+1. Click the **"Tryb Admina"** toggle in the header
+2. Enter the password: `kebabadmin`
+3. Edit and Delete buttons will appear on each order
+4. Your admin status persists across page refreshes
+
+## API Endpoints
+
+- `GET /api/orders` - List all orders
+- `POST /api/orders` - Create new order
+- `PATCH /api/orders/{id}` - Update order
+- `DELETE /api/orders/{id}` - Delete order
+- `GET /api/orders/stream` - Server-Sent Events for real-time updates
+- `POST /api/orders/pdf` - Generate PDF report
+
+## Tech Stack
+
+- **Frontend**: React 19, TypeScript, Vite, Tailwind CSS, Recharts
+- **Backend**: FastAPI, Python 3.11
+- **Database**: Google Cloud Firestore (or emulator for local development)
+- **Container**: Docker, Docker Compose
+
+## License
+
+MIT
